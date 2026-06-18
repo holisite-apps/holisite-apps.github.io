@@ -15,18 +15,32 @@
 
 ## 技术栈
 
-- Next.js (App Router) + TypeScript + Tailwind CSS
-- shadcn/ui
-- google-play-scraper + app-store-scraper
+- Next.js 16 (App Router) + TypeScript + Tailwind CSS 4
+- shadcn/ui（Task 3 起安装）
+- google-play-scraper + app-store-scraper（Task 5 起安装）
 
 ## 开发流程
 
 按 [DEVELOPMENT_TASKS.md](./docs/DEVELOPMENT_TASKS.md) 逐步执行，**每步完成后需确认再进行下一步**。
 
 ```bash
+npm run dev      # 本地开发 http://localhost:3000
+npm run lint     # ESLint
+npm run build    # 生产构建
+
 # 后续任务完成后可用：
 npm run fetch    # 抓取商店数据 → data/
-npm run build    # SSG 构建 → out/
+```
+
+## 项目结构（当前）
+
+```
+app-seo/
+├── docs/                 # 规格与任务文档
+├── src/app/              # Next.js App Router
+├── public/
+├── apps.config.json      # Task 4 创建
+└── package.json
 ```
 
 ## 站点结构

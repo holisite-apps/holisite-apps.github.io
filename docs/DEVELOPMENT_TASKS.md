@@ -24,30 +24,32 @@
 - [x] 模板 section 与线框与先前沟通一致
 - [x] 明确 `data/` 不提交 git
 
-**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 2**
+**状态：** ✅ 完成
 
 ---
 
-## Task 2 — create-next-app 创建标准 Next.js 项目 ⬜
+## Task 2 — create-next-app 创建标准 Next.js 项目 ✅
 
 **目标：** 使用官方 CLI 初始化项目，App Router + TypeScript + Tailwind + ESLint。
 
-**命令（计划）：**
+**命令（实际）：**
 ```bash
+# 目录非空，先暂存 docs/ 与 README.md 再执行
 npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --use-npm --yes
 ```
 
 **交付物：**
-- Next.js 标准目录结构
-- `package.json` scripts 占位
-- `.gitignore` 补充 `data/`、`out/`、`public/assets/apps/`
+- [x] Next.js 16.2.9 + React 19 + Tailwind CSS 4 标准目录
+- [x] `src/app/` App Router 结构
+- [x] `.gitignore` 补充 `data/`、`public/assets/apps/`、`.cache/`（`out/` 已由 CLI 包含）
+- [x] 保留 `docs/` 与项目 `README.md`
 
 **自检：**
-- [ ] `npm run dev` 可启动
-- [ ] `npm run build` 可构建（初始空页）
-- [ ] TypeScript / ESLint 无报错
+- [x] `npm run dev` 可启动（localhost:3000 返回 200）
+- [x] `npm run build` 成功，静态页 `/` 已生成
+- [x] `npm run lint` 无报错
 
-**状态：** ⬜ 待办（需 Task 1 确认）
+**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 3**
 
 ---
 
@@ -185,3 +187,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 | 日期 | 任务 | 说明 |
 |------|------|------|
 | 2026-06-18 | Task 1 | 初始文档输出 |
+| 2026-06-18 | Task 2 | create-next-app 16.2.9，lint/build/dev 自检通过 |
