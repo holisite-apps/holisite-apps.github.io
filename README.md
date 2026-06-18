@@ -16,7 +16,7 @@
 ## 技术栈
 
 - Next.js 16 (App Router) + TypeScript + Tailwind CSS 4
-- shadcn/ui（Task 3 起安装）
+- shadcn/ui 4（base-nova 风格，Base UI 原语）
 - google-play-scraper + app-store-scraper（Task 5 起安装）
 
 ## 开发流程
@@ -37,7 +37,11 @@ npm run fetch    # 抓取商店数据 → data/
 ```
 app-seo/
 ├── docs/                 # 规格与任务文档
-├── src/app/              # Next.js App Router
+├── components.json       # shadcn/ui 配置
+├── src/
+│   ├── app/
+│   ├── components/ui/    # shadcn 组件
+│   └── lib/utils.ts
 ├── public/
 ├── apps.config.json      # Task 4 创建
 └── package.json

@@ -53,19 +53,25 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 
 ---
 
-## Task 3 — 初始化 shadcn/ui ⬜
+## Task 3 — 初始化 shadcn/ui ✅
 
 **目标：** 安装 shadcn/ui，配置与 Tailwind 集成。
 
 **交付物：**
-- `components/ui/` 基础组件（Button, Card, Badge, Accordion, Separator）
-- `lib/utils.ts`
+- [x] `components.json`（style: base-nova, Tailwind v4, RSC）
+- [x] `src/lib/utils.ts`（`cn()`）
+- [x] `src/components/ui/`：button, card, badge, accordion, separator
+- [x] `src/app/globals.css` — shadcn 主题 CSS 变量
+- [x] `src/components/dev/shadcn-smoke-test.tsx` — 渲染自检（Task 9 移除）
+
+**依赖：** `@base-ui/react`, `class-variance-authority`, `clsx`, `tailwind-merge`, `lucide-react`, `tw-animate-css`
 
 **自检：**
-- [ ] 示例 Button 可渲染
-- [ ] 主题变量正常
+- [x] Button / Card / Badge / Accordion / Separator 在首页可渲染
+- [x] `npm run lint` 通过
+- [x] `npm run build` 通过
 
-**状态：** ⬜ 待办
+**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 4**
 
 ---
 
@@ -188,3 +194,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 |------|------|------|
 | 2026-06-18 | Task 1 | 初始文档输出 |
 | 2026-06-18 | Task 2 | create-next-app 16.2.9，lint/build/dev 自检通过 |
+| 2026-06-18 | Task 3 | shadcn/ui base-nova，5 个基础组件，lint/build 通过 |
