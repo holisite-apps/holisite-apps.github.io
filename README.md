@@ -40,7 +40,6 @@ app-seo/
 ├── src/
 │   ├── app/             # 品牌首页与 /apps/[slug]
 │   ├── components/
-│   │   ├── dev/          # 临时 smoke tests
 │   │   ├── landing/      # 落地页共享组件
 │   │   └── ui/           # shadcn 组件
 │   └── lib/

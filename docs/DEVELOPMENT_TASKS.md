@@ -181,15 +181,22 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 
 ---
 
-## Task 9 — 品牌首页 ⬜
+## Task 9 — 品牌首页 ✅
 
 **目标：** `/` 品牌页，读 `site.home`，无 App 列表。
 
-**自检：**
-- [ ] 无 App 网格
-- [ ] 内容与 config 一致
+**交付物：**
+- [x] `src/app/page.tsx` — 正式品牌首页
+- [x] `src/app/layout.tsx` — 使用 `site` 配置输出根 metadata 与 `lang`
+- [x] 删除 Task 7 临时 smoke test 组件
 
-**状态：** ⬜ 待办
+**自检：**
+- [x] 无 App 网格；导出首页不包含具体 App slug
+- [x] 内容与 `apps.config.json` 的 `site.home` 一致
+- [x] `npm run lint` / `npm run build` 通过
+- [x] dev server `/` 返回 HTTP 200
+
+**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 10**
 
 ---
 
@@ -229,3 +236,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 | 2026-06-22 | Task 6 | static export + generated data loader + prebuild 检查 |
 | 2026-06-22 | Task 7 | 共享 landing 组件 + 首页 smoke test |
 | 2026-06-22 | Task 8 | 三套模板 + `/apps/[slug]` SSG 路由 |
+| 2026-06-22 | Task 9 | 正式品牌首页，移除临时 smoke tests |
