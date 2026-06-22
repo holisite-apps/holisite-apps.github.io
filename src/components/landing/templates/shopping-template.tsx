@@ -20,6 +20,7 @@ import {
   FeatureGrid,
   JsonLd,
   SectionShell,
+  SeoKeywordSection,
   buildSoftwareApplicationJsonLd,
   defaultShoppingValueProps,
   type LandingTemplateProps,
@@ -116,6 +117,13 @@ export function ShoppingTemplate({ app, brandName }: LandingTemplateProps) {
         </SectionShell>
 
         <AboutSection app={app} compact />
+
+        <SeoKeywordSection
+          app={app}
+          title={`Shopping workflows related to ${app.name}`}
+          eyebrow="Shopping agent searches"
+          variant="shopping"
+        />
 
         {app.faq.length > 0 ? (
           <SectionShell className="py-14">

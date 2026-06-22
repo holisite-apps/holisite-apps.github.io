@@ -13,6 +13,7 @@ import {
   FeatureGrid,
   JsonLd,
   SectionShell,
+  SeoKeywordSection,
   buildSoftwareApplicationJsonLd,
   defaultBibleFeatures,
   formatDate,
@@ -77,6 +78,12 @@ export function BibleTemplate({ app, brandName }: LandingTemplateProps) {
         </SectionShell>
 
         <AboutSection app={app} />
+
+        <SeoKeywordSection
+          app={app}
+          title={`Bible study topics for ${app.name}`}
+          eyebrow="Scripture searches"
+        />
 
         <SectionShell className="py-8">
           <div className="rounded-2xl border border-[#d9c7ad] bg-white/60 p-5 text-sm text-[#6d5c4a]">

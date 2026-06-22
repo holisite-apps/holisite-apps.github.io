@@ -1,13 +1,21 @@
 import type { ReactNode } from "react";
-import { BookOpenIcon, CheckCircle2Icon, HeartIcon, ShieldIcon } from "lucide-react";
+import {
+  BookOpenIcon,
+  CheckCircle2Icon,
+  HeartIcon,
+  ShieldIcon,
+  TagsIcon,
+} from "lucide-react";
 
 import { AppFooter, StoreButtons } from "@/components/landing/shared";
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import type { GeneratedAppData } from "@/lib/app-data.schema";
 import { cn } from "@/lib/utils";
 
@@ -153,6 +161,92 @@ export function AboutSection({
   );
 }
 
+export function SeoKeywordSection({
+  app,
+  title,
+  eyebrow = "Related searches",
+  className,
+  variant = "default",
+}: {
+  app: GeneratedAppData;
+  title: string;
+  eyebrow?: string;
+  className?: string;
+  variant?: "default" | "soft" | "shopping";
+}) {
+  const terms = uniqueTerms([
+    ...app.seo.targetKeywords,
+    ...app.seo.relatedTerms,
+  ]);
+
+  if (terms.length === 0 && !app.seo.keywordIntro) {
+    return null;
+  }
+
+  return (
+    <section
+      className={cn(
+        "mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8",
+        className,
+      )}
+    >
+      <Card
+        className={cn(
+          "rounded-[2rem] border-foreground/10 bg-white/75 shadow-sm",
+          variant === "soft" && "border-rose-100 bg-white/70",
+          variant === "shopping" && "border-emerald-100 bg-emerald-50/60",
+        )}
+      >
+        <CardHeader>
+          <div className="flex items-center gap-3">
+            <span
+              className={cn(
+                "grid size-10 place-items-center rounded-2xl bg-primary/10 text-primary",
+                variant === "soft" && "bg-rose-100 text-rose-700",
+                variant === "shopping" && "bg-emerald-100 text-emerald-700",
+              )}
+            >
+              <TagsIcon className="size-5" aria-hidden="true" />
+            </span>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                {eyebrow}
+              </p>
+              <CardTitle className="mt-1 text-2xl">{title}</CardTitle>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent className="space-y-5">
+          {app.seo.keywordIntro ? (
+            <p className="max-w-3xl text-sm leading-7 text-muted-foreground">
+              {app.seo.keywordIntro}
+            </p>
+          ) : null}
+          {terms.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {terms.map((term) => (
+                <Badge
+                  className={cn(
+                    "rounded-full px-3 py-1",
+                    variant === "shopping" &&
+                      "bg-white text-emerald-800 ring-1 ring-emerald-100",
+                    variant === "soft" &&
+                      "bg-white text-rose-800 ring-1 ring-rose-100",
+                  )}
+                  key={term}
+                  variant={variant === "default" ? "secondary" : "outline"}
+                >
+                  {term}
+                </Badge>
+              ))}
+            </div>
+          ) : null}
+        </CardContent>
+      </Card>
+    </section>
+  );
+}
+
 export function DownloadCta({
   app,
   title,
@@ -257,6 +351,10 @@ export function buildSoftwareApplicationJsonLd(app: GeneratedAppData) {
       priceCurrency: "USD",
     },
   };
+}
+
+function uniqueTerms(terms: string[]): string[] {
+  return [...new Set(terms.map((term) => term.trim()).filter(Boolean))];
 }
 
 export function SectionShell({

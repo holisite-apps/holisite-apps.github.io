@@ -114,9 +114,36 @@
 | `title` | string | `<title>`，建议 ≤ 60 字符 |
 | `description` | string | meta description，建议 ≤ 160 字符 |
 | `keywords` | string[] | 可选 |
+| `targetKeywords` | string[] | 可见正文关键词，模板会渲染到关键词区块 |
+| `relatedTerms` | string[] | 相关搜索词 / 竞品词 / 场景词，模板会渲染到关键词区块 |
+| `keywordIntro` | string | 关键词区块的自然语言说明，避免纯堆词 |
 | `canonical` | string | 默认 `{site.url}/apps/{slug}/` |
 | `ogImage` | string | 默认 icon 或首张 screenshot |
 | `noindex` | boolean | 临时禁止索引 |
+
+#### SEO 关键词使用建议
+
+`keywords` 会进入 metadata；`targetKeywords` / `relatedTerms` 会进入页面可见正文。现代搜索引擎更重视正文语义，建议优先写自然语言的 `keywordIntro`，再列关键词。
+
+购物类可以覆盖竞品或相关工具名，但不要写误导性表述，例如不要使用 `Official Oopbuy`。推荐写法：
+
+```json
+"seo": {
+  "targetKeywords": ["Oopbuy finds", "Mulebuy finds", "Kakobuy spreadsheet"],
+  "relatedTerms": ["CNFans", "Hoobuy", "Taobao product links"],
+  "keywordIntro": "Kakobuy helps organize finds, links, and shopping lists for Kakobuy, Oopbuy, Mulebuy, CNFans, Hoobuy, and similar China shopping workflows."
+}
+```
+
+Bible / Women Bible 类建议覆盖版本、场景和使用意图：
+
+```json
+"seo": {
+  "targetKeywords": ["offline NIV Bible", "daily Bible verse", "women devotional app"],
+  "relatedTerms": ["Bible study app", "daily scripture", "prayer app"],
+  "keywordIntro": "A Bible app for daily scripture reading, devotionals, prayer, and study."
+}
+```
 
 ---
 

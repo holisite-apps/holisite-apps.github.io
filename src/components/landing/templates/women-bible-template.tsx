@@ -14,6 +14,7 @@ import {
   FeatureGrid,
   JsonLd,
   SectionShell,
+  SeoKeywordSection,
   buildSoftwareApplicationJsonLd,
   defaultBibleFeatures,
   defaultWomenBibleHighlights,
@@ -89,6 +90,13 @@ export function WomenBibleTemplate({ app, brandName }: LandingTemplateProps) {
           </SectionShell>
 
           <AboutSection app={app} className="max-w-3xl" compact />
+
+          <SeoKeywordSection
+            app={app}
+            title={`Faith topics for ${app.name}`}
+            eyebrow="Devotional searches"
+            variant="soft"
+          />
 
           <DownloadCta
             app={app}

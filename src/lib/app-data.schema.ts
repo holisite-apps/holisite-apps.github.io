@@ -72,6 +72,9 @@ export const generatedAppDataSchema = z.object({
     canonical: z.string().url(),
     ogImage: z.string().optional(),
     keywords: z.array(z.string()).optional(),
+    targetKeywords: z.array(z.string()),
+    relatedTerms: z.array(z.string()),
+    keywordIntro: z.string().optional(),
     noindex: z.boolean().optional(),
   }),
   features: z.array(

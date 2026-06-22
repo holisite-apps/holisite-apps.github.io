@@ -68,6 +68,9 @@ type PageData = {
     canonical: string;
     ogImage?: string;
     keywords?: string[];
+    targetKeywords: string[];
+    relatedTerms: string[];
+    keywordIntro?: string;
     noindex?: boolean;
   };
   features: NonNullable<AppConfig["features"]>;
@@ -119,6 +122,15 @@ function firstSentence(text?: string): string {
   const normalized = text.replace(/\s+/g, " ").trim();
   const match = normalized.match(/^(.{40,180}?[.!?])\s/);
   return match?.[1] ?? normalized.slice(0, 160);
+}
+
+function mergeKeywords(...groups: (string[] | undefined)[]): string[] {
+  return uniqueStrings(
+    groups
+      .flatMap((group) => group ?? [])
+      .map((keyword) => keyword.trim())
+      .filter(Boolean),
+  );
 }
 
 function toHttpsUrl(url: string): string {
@@ -331,6 +343,13 @@ async function buildPageData(
   const canonical = getAppCanonicalUrl(config, app.slug);
   const seoDescription =
     app.seo?.description ?? tagline ?? firstSentence(description);
+  const targetKeywords = app.seo?.targetKeywords ?? [];
+  const relatedTerms = app.seo?.relatedTerms ?? [];
+  const keywords = mergeKeywords(
+    app.seo?.keywords,
+    targetKeywords,
+    relatedTerms,
+  );
 
   return {
     slug: app.slug,
@@ -363,7 +382,10 @@ async function buildPageData(
       description: seoDescription,
       canonical,
       ogImage: app.seo?.ogImage ?? media.icon ?? media.screenshots[0],
-      keywords: app.seo?.keywords,
+      keywords: keywords.length > 0 ? keywords : undefined,
+      targetKeywords,
+      relatedTerms,
+      keywordIntro: app.seo?.keywordIntro,
       noindex: app.seo?.noindex,
     },
     features: app.features ?? [],
