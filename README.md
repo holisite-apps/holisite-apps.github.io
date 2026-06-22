@@ -61,6 +61,8 @@ app-seo/
 ```
 https://username.github.io/              品牌首页
 https://username.github.io/apps/{slug}/  App 落地页
+https://username.github.io/sitemap.xml   Sitemap
+https://username.github.io/robots.txt    Robots
 ```
 
 > 将 `username` 替换为你的 GitHub 用户名。

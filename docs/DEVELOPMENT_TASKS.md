@@ -200,15 +200,23 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 
 ---
 
-## Task 10 — sitemap / robots ⬜
+## Task 10 — sitemap / robots ✅
 
 **目标：** 从 config 生成 SEO 文件。
 
-**自检：**
-- [ ] 所有 enabled app 在 sitemap 中
-- [ ] canonical URL 正确
+**交付物：**
+- [x] `src/app/sitemap.ts`
+- [x] `src/app/robots.ts`
+- [x] Sitemap 包含首页、5 个 App 页与图片 URL
+- [x] Robots 允许全站抓取并指向 sitemap
 
-**状态：** ⬜ 待办
+**自检：**
+- [x] 所有 enabled app 在 sitemap 中（共 6 个 `<loc>`：首页 + 5 App）
+- [x] canonical URL 正确，均使用 `https://username.github.io/...`
+- [x] `out/sitemap.xml` / `out/robots.txt` 成功导出
+- [x] `npm run lint` / `npm run build` 通过
+
+**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 11**
 
 ---
 
@@ -237,3 +245,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 | 2026-06-22 | Task 7 | 共享 landing 组件 + 首页 smoke test |
 | 2026-06-22 | Task 8 | 三套模板 + `/apps/[slug]` SSG 路由 |
 | 2026-06-22 | Task 9 | 正式品牌首页，移除临时 smoke tests |
+| 2026-06-22 | Task 10 | sitemap.xml + robots.txt 静态导出 |
