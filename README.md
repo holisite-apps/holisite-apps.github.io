@@ -26,7 +26,7 @@
 ```bash
 npm run dev      # 本地开发 http://localhost:3000
 npm run lint     # ESLint
-npm run build    # 生产构建
+npm run build    # 生产静态导出 → out/（会先检查 data/）
 npm run validate:config  # 校验 apps.config.json
 npm run fetch    # 抓取商店数据 → data/
 ```
@@ -44,9 +44,12 @@ app-seo/
 ├── public/
 ├── apps.config.json      # App 列表与模板配置
 ├── scripts/
+│   ├── check-data.ts
 │   ├── fetch-apps.ts
 │   └── validate-config.ts
 ├── src/lib/
+│   ├── app-data.ts
+│   ├── app-data.schema.ts
 │   ├── config.ts
 │   └── config.schema.ts
 └── package.json

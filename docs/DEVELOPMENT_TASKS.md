@@ -115,19 +115,22 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 
 ---
 
-## Task 6 — Next.js 静态导出配置 ⬜
+## Task 6 — Next.js 静态导出配置 ✅
 
 **目标：** 配置 SSG + static export，适配 GitHub Pages。
 
 **交付物：**
-- `next.config.ts`：`output: 'export'`, `trailingSlash: true`, `images.unoptimized`
-- 读取 `data/` 的 loader 工具函数
+- [x] `next.config.ts`：`output: 'export'`, `trailingSlash: true`, `images.unoptimized`
+- [x] `src/lib/app-data.schema.ts` — generated data / manifest Zod schema
+- [x] `src/lib/app-data.ts` — 读取 `data/` 的 loader 工具函数
+- [x] `scripts/check-data.ts` + `prebuild` — build 前检查 `data/`
 
 **自检：**
-- [ ] 无 `data/` 时 build 报友好错误
-- [ ] 有 `data/` 时 `out/` 生成正确
+- [x] 无 `data/` 时 build 报友好错误：先运行 `npm run fetch`
+- [x] 有 `data/` 时 `out/` 生成正确
+- [x] `npm run validate:config` / `npm run lint` / `npm run build` 通过
 
-**状态：** ⬜ 待办
+**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 7**
 
 ---
 
@@ -201,3 +204,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 | 2026-06-18 | Task 3 | shadcn/ui base-nova，5 个基础组件，lint/build 通过 |
 | 2026-06-18 | Task 4 | apps.config.json + Zod + validate:config |
 | 2026-06-22 | Task 5 | fetch 脚本，5 个真实 App 抓取与图片落盘通过 |
+| 2026-06-22 | Task 6 | static export + generated data loader + prebuild 检查 |
