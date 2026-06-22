@@ -5,6 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    # Weekly refresh: Monday 10:00 Beijing time (UTC+8).
+    - cron: "0 2 * * 1"
 
 permissions:
   contents: read
