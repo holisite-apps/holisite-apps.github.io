@@ -157,16 +157,27 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 
 ---
 
-## Task 8 — 三套模板 + App 动态路由 ⬜
+## Task 8 — 三套模板 + App 动态路由 ✅
 
 **目标：** `app/apps/[slug]/page.tsx` + generateStaticParams + 三模板。
 
-**自检：**
-- [ ] 每个 enabled slug 生成静态页
-- [ ] template 映射正确
-- [ ] metadata + JSON-LD 正确
+**交付物：**
+- [x] `src/components/landing/templates/BibleTemplate`
+- [x] `src/components/landing/templates/WomenBibleTemplate`
+- [x] `src/components/landing/templates/ShoppingTemplate`
+- [x] `src/components/landing/templates/AppTemplate` — template 映射
+- [x] `src/app/apps/[slug]/page.tsx` — SSG 动态路由
+- [x] App metadata：title、description、canonical、Open Graph、Twitter
+- [x] JSON-LD：`SoftwareApplication`
 
-**状态：** ⬜ 待办
+**自检：**
+- [x] 每个 enabled slug 生成静态页（5 个 `/apps/{slug}/index.html`）
+- [x] template 映射正确
+- [x] metadata + JSON-LD 已输出
+- [x] `npm run lint` / `npm run build` 通过
+- [x] dev server `/apps/niv-bible/` 返回 HTTP 200 且 prerender 命中
+
+**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 9**
 
 ---
 
@@ -217,3 +228,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 | 2026-06-22 | Task 5 | fetch 脚本，5 个真实 App 抓取与图片落盘通过 |
 | 2026-06-22 | Task 6 | static export + generated data loader + prebuild 检查 |
 | 2026-06-22 | Task 7 | 共享 landing 组件 + 首页 smoke test |
+| 2026-06-22 | Task 8 | 三套模板 + `/apps/[slug]` SSG 路由 |

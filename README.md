@@ -38,23 +38,22 @@ app-seo/
 ├── docs/                 # 规格与任务文档
 ├── components.json       # shadcn/ui 配置
 ├── src/
-│   ├── app/
+│   ├── app/             # 品牌首页与 /apps/[slug]
 │   ├── components/
 │   │   ├── dev/          # 临时 smoke tests
 │   │   ├── landing/      # 落地页共享组件
 │   │   └── ui/           # shadcn 组件
 │   └── lib/
+│       ├── app-data.ts
+│       ├── app-data.schema.ts
+│       ├── config.ts
+│       └── config.schema.ts
 ├── public/
 ├── apps.config.json      # App 列表与模板配置
 ├── scripts/
 │   ├── check-data.ts
 │   ├── fetch-apps.ts
 │   └── validate-config.ts
-├── src/lib/
-│   ├── app-data.ts
-│   ├── app-data.schema.ts
-│   ├── config.ts
-│   └── config.schema.ts
 └── package.json
 ```
 
