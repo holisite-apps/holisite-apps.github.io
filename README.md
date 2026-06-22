@@ -18,6 +18,7 @@
 - Next.js 16 (App Router) + TypeScript + Tailwind CSS 4
 - shadcn/ui 4（base-nova 风格，Base UI 原语）
 - google-play-scraper + app-store-scraper（Task 5 起安装）
+- Firebase Web Analytics（page view 与商店按钮点击统计）
 
 ## 开发流程
 
@@ -29,6 +30,22 @@ npm run lint     # ESLint
 npm run build    # 生产静态导出 → out/（会先检查 data/）
 npm run validate:config  # 校验 apps.config.json
 npm run fetch    # 抓取商店数据 → data/
+```
+
+## Firebase 统计
+
+复制 `.env.example` 为 `.env.local`，填入 Firebase Console 里的 Web App 配置。缺少配置时统计会自动禁用，不影响构建。
+
+部署到 GitHub Pages 时，在仓库 Settings → Secrets and variables → Actions → Variables 中添加同名变量：
+
+```bash
+NEXT_PUBLIC_FIREBASE_API_KEY
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+NEXT_PUBLIC_FIREBASE_PROJECT_ID
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+NEXT_PUBLIC_FIREBASE_APP_ID
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 ```
 
 ## 部署
@@ -46,6 +63,7 @@ npm run build
 
 1. 将 `apps.config.json` 里的 `username` 替换为真实 GitHub 用户名。
 2. 在 GitHub 仓库 Settings → Pages 中选择 **GitHub Actions**。
+3. 如需启用 Firebase 统计，添加上方 `NEXT_PUBLIC_FIREBASE_*` Variables。
 
 ## 项目结构（当前）
 

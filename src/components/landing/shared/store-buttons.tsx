@@ -1,5 +1,8 @@
+"use client";
+
 import type { ReactNode } from "react";
 
+import { logFirebaseEvent } from "@/lib/firebase/analytics";
 import { cn } from "@/lib/utils";
 
 type StoreButtonLink = {
@@ -62,18 +65,29 @@ function StoreBadge({
   eyebrow,
   label,
   icon,
+  platform,
 }: {
   href: string;
   eyebrow: string;
   label: string;
   icon: ReactNode;
+  platform: "ios" | "android";
 }) {
+  function handleClick() {
+    void logFirebaseEvent("store_click", {
+      store_platform: platform,
+      store_label: label,
+      store_url: href,
+    });
+  }
+
   return (
     <a
       className="inline-flex min-h-12 min-w-44 items-center justify-center gap-3 rounded-xl bg-zinc-950 px-4 py-2 text-left text-white shadow-sm ring-1 ring-white/10 transition hover:-translate-y-0.5 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
     >
       <span className="shrink-0">{icon}</span>
       <span className="grid gap-0.5 leading-none">
@@ -111,6 +125,7 @@ export function StoreButtons({
           eyebrow="Download on the"
           label="App Store"
           icon={<AppleIcon className="size-6" />}
+          platform="ios"
         />
       ) : null}
       {android ? (
@@ -119,6 +134,7 @@ export function StoreButtons({
           eyebrow="Get it on"
           label="Google Play"
           icon={<GooglePlayIcon className="size-6" />}
+          platform="android"
         />
       ) : null}
     </div>

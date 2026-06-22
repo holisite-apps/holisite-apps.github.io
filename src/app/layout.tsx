@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
+
+import { FirebaseAnalytics } from "@/components/analytics/firebase-analytics";
 import { loadAppsConfig } from "@/lib/config";
 import "./globals.css";
 
@@ -38,7 +41,12 @@ export default function RootLayout({
       lang={config.site.locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Suspense fallback={null}>
+          <FirebaseAnalytics />
+        </Suspense>
+        {children}
+      </body>
     </html>
   );
 }
