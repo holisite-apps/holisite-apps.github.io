@@ -1,11 +1,11 @@
 {
   "site": {
     "name": "Holisite",
-    "url": "https://username.github.io",
+    "url": "https://holisite-apps.github.io",
     "locale": "en",
     "description": "Bible and lifestyle apps by Holisite.",
     "githubPages": {
-      "repository": "username/username.github.io",
+      "repository": "holisite-apps/holisite-apps.github.io",
       "basePath": "",
       "customDomain": ""
     },
