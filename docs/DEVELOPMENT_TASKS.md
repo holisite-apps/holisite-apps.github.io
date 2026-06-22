@@ -134,15 +134,26 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 
 ---
 
-## Task 7 — 共用 landing 组件 ⬜
+## Task 7 — 共用 landing 组件 ✅
 
 **目标：** StoreButtons、ScreenshotCarousel、AppFooter 等。
 
-**自检：**
-- [ ] 单平台 / 双平台按钮逻辑正确
-- [ ] 外链属性正确
+**交付物：**
+- [x] `src/components/landing/shared/StoreButtons` — 官方商店按钮逻辑
+- [x] `src/components/landing/shared/ScreenshotCarousel` — 横向截图展示
+- [x] `src/components/landing/shared/AppHeader` — App 顶栏
+- [x] `src/components/landing/shared/AppFooter` — 页脚链接
+- [x] `src/components/landing/shared/RatingDisplay` — 评分展示
+- [x] `src/components/dev/landing-components-smoke-test.tsx` — 临时 smoke test
 
-**状态：** ⬜ 待办
+**自检：**
+- [x] 单平台 / 双平台按钮逻辑正确
+- [x] 外链属性正确：`target="_blank"` + `rel="noopener noreferrer"`
+- [x] 真实 generated data 可渲染到首页 smoke test
+- [x] `npm run lint` / `npm run build` 通过
+- [x] dev server 首页返回 HTTP 200
+
+**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 8**
 
 ---
 
@@ -205,3 +216,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 | 2026-06-18 | Task 4 | apps.config.json + Zod + validate:config |
 | 2026-06-22 | Task 5 | fetch 脚本，5 个真实 App 抓取与图片落盘通过 |
 | 2026-06-22 | Task 6 | static export + generated data loader + prebuild 检查 |
+| 2026-06-22 | Task 7 | 共享 landing 组件 + 首页 smoke test |

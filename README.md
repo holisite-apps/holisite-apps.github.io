@@ -39,8 +39,11 @@ app-seo/
 ├── components.json       # shadcn/ui 配置
 ├── src/
 │   ├── app/
-│   ├── components/ui/    # shadcn 组件
-│   └── lib/utils.ts
+│   ├── components/
+│   │   ├── dev/          # 临时 smoke tests
+│   │   ├── landing/      # 落地页共享组件
+│   │   └── ui/           # shadcn 组件
+│   └── lib/
 ├── public/
 ├── apps.config.json      # App 列表与模板配置
 ├── scripts/
