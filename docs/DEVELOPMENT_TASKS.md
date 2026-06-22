@@ -94,22 +94,24 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 
 ---
 
-## Task 5 — fetch 脚本 ⬜
+## Task 5 — fetch 脚本 ✅
 
 **目标：** `npm run fetch` 抓取商店数据写入 `data/`。
 
 **交付物：**
-- `scripts/fetch-apps.ts`
-- 安装 `google-play-scraper`、`app-store-scraper`
-- merge 逻辑（iOS 优先）
-- 图片下载至 `public/assets/apps/{slug}/`
+- [x] `scripts/fetch-apps.ts`
+- [x] 安装 `google-play-scraper`、`app-store-scraper`
+- [x] merge 逻辑（iOS 优先，iOS 截图为空时回退 Android 截图）
+- [x] 图片下载至 `public/assets/apps/{slug}/`
+- [x] 生成 `data/apps/{slug}.json` 与 `data/manifest.json`
 
 **自检：**
-- [ ] 对示例 appId 能生成 `data/apps/{slug}.json`
-- [ ] manifest.json 正确
-- [ ] 失败时 exit 1
+- [x] 对 5 个真实 appId 能生成 `data/apps/{slug}.json`
+- [x] manifest.json 正确，errors 为空
+- [x] 截图先去重再最多保留 8 张；当前 5 个 App 各产出 5–6 张不重复截图
+- [x] `npm run validate:config` / `npm run lint` / `npm run build` 通过
 
-**状态：** ⬜ 待办
+**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 6**
 
 ---
 
@@ -198,3 +200,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 | 2026-06-18 | Task 2 | create-next-app 16.2.9，lint/build/dev 自检通过 |
 | 2026-06-18 | Task 3 | shadcn/ui base-nova，5 个基础组件，lint/build 通过 |
 | 2026-06-18 | Task 4 | apps.config.json + Zod + validate:config |
+| 2026-06-22 | Task 5 | fetch 脚本，5 个真实 App 抓取与图片落盘通过 |

@@ -28,8 +28,6 @@ npm run dev      # 本地开发 http://localhost:3000
 npm run lint     # ESLint
 npm run build    # 生产构建
 npm run validate:config  # 校验 apps.config.json
-
-# 后续任务完成后可用：
 npm run fetch    # 抓取商店数据 → data/
 ```
 
@@ -46,6 +44,7 @@ app-seo/
 ├── public/
 ├── apps.config.json      # App 列表与模板配置
 ├── scripts/
+│   ├── fetch-apps.ts
 │   └── validate-config.ts
 ├── src/lib/
 │   ├── config.ts
