@@ -58,6 +58,16 @@ const githubPagesSchema = z
   })
   .optional();
 
+const trackingSchema = z
+  .object({
+    enabled: z.boolean().default(true),
+    utmSource: z.string().min(1).default("holisite"),
+    utmMedium: z.string().min(1).default("landing_page"),
+    campaign: z.string().min(1).optional(),
+    iosProviderToken: z.string().min(1).optional(),
+  })
+  .optional();
+
 export const siteSchema = z.object({
   name: z.string().min(1),
   url: urlNoTrailingSlash,
@@ -65,6 +75,7 @@ export const siteSchema = z.object({
   description: z.string().optional(),
   githubPages: githubPagesSchema,
   home: siteHomeSchema,
+  tracking: trackingSchema,
 });
 
 export const templateMetaSchema = z.object({
@@ -158,6 +169,7 @@ export const appConfigSchema = z.object({
   priority: z.number().int().optional(),
   stores: storesSchema,
   seo: seoSchema.optional(),
+  tracking: trackingSchema,
   overrides: overridesSchema.optional(),
   features: z.array(featureSchema).optional(),
   valueProps: z.array(valuePropSchema).optional(),

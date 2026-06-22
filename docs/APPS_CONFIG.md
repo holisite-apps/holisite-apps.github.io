@@ -23,6 +23,7 @@
 | `locale` | string | 建议 | 默认 `en` |
 | `description` | string | 可选 | 品牌首页 meta description |
 | `githubPages` | object | 建议 | GitHub Pages 配置 |
+| `tracking` | object | 建议 | 商店跳转归因参数配置 |
 
 ### site.githubPages
 
@@ -40,6 +41,30 @@
 | `subheadline` | string | Hero 副标题 |
 | `intro` | string | 品牌介绍段落 |
 | `values` | array | `[{ "title": "", "description": "" }]`，最多 3 项 |
+
+### site.tracking（商店跳转归因，可选）
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `enabled` | boolean | 是否启用跳转追踪，默认 `true` |
+| `utmSource` | string | 默认 `holisite` |
+| `utmMedium` | string | 默认 `landing_page` |
+| `campaign` | string | 可选；不填时每个 App 使用自己的 `slug` |
+| `iosProviderToken` | string | 可选 Apple Provider Token；有值时 App Store URL 会追加 `pt` |
+
+Android Google Play URL 会追加 `referrer`，内容类似：
+
+```text
+utm_source=holisite&utm_medium=landing_page&utm_campaign=kakobuy&utm_content=google_play_button
+```
+
+iOS App Store URL 会追加：
+
+```text
+utm_source=holisite&utm_medium=landing_page&utm_campaign=kakobuy&utm_content=app_store_button&ct=kakobuy_app_store_button
+```
+
+如果某个 App 需要覆盖 campaign，可在 `apps[]` 条目里写同名 `tracking` 字段。
 
 ---
 
@@ -75,6 +100,7 @@
 | `enabled` | boolean | 建议 | 默认 `true`；`false` 时不 fetch、不生成页 |
 | `name` | string | 可选 | 覆盖显示名 |
 | `priority` | number | 可选 | 内部排序用（首页不展示列表时可忽略） |
+| `tracking` | object | 可选 | 覆盖 `site.tracking`，常用于单 App 自定义 campaign |
 
 ### slug 规则
 

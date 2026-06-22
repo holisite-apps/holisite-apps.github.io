@@ -9,6 +9,11 @@
       "basePath": "",
       "customDomain": ""
     },
+    "tracking": {
+      "enabled": true,
+      "utmSource": "holisite",
+      "utmMedium": "landing_page"
+    },
     "home": {
       "headline": "Holisite",
       "subheadline": "Thoughtful apps for daily life",

@@ -24,6 +24,14 @@ type StorePlatform = "ios" | "android";
 
 type StoreApp = Record<string, unknown>;
 
+type TrackingConfig = {
+  enabled: boolean;
+  utmSource: string;
+  utmMedium: string;
+  campaign?: string;
+  iosProviderToken?: string;
+};
+
 type FetchStatus =
   | { slug: string; status: "ok"; platforms: StorePlatform[] }
   | { slug: string; status: "error"; error: string };
@@ -131,6 +139,78 @@ function mergeKeywords(...groups: (string[] | undefined)[]): string[] {
       .map((keyword) => keyword.trim())
       .filter(Boolean),
   );
+}
+
+function resolveTrackingConfig(
+  config: AppsConfig,
+  app: AppConfig,
+): TrackingConfig {
+  return {
+    enabled: app.tracking?.enabled ?? config.site.tracking?.enabled ?? true,
+    utmSource:
+      app.tracking?.utmSource ?? config.site.tracking?.utmSource ?? "holisite",
+    utmMedium:
+      app.tracking?.utmMedium ??
+      config.site.tracking?.utmMedium ??
+      "landing_page",
+    campaign: app.tracking?.campaign ?? config.site.tracking?.campaign ?? app.slug,
+    iosProviderToken:
+      app.tracking?.iosProviderToken ?? config.site.tracking?.iosProviderToken,
+  };
+}
+
+function appendQueryParams(
+  url: string,
+  params: Record<string, string | undefined>,
+): string {
+  const parsed = new URL(toHttpsUrl(url));
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value) {
+      parsed.searchParams.set(key, value);
+    }
+  });
+
+  return parsed.toString();
+}
+
+function buildAndroidReferrer(tracking: TrackingConfig, content: string): string {
+  const params = new URLSearchParams({
+    utm_source: tracking.utmSource,
+    utm_medium: tracking.utmMedium,
+    utm_campaign: tracking.campaign ?? "landing_page",
+    utm_content: content,
+  });
+
+  return params.toString();
+}
+
+function withStoreTracking(
+  url: string,
+  platform: StorePlatform,
+  tracking: TrackingConfig,
+): string {
+  if (!tracking.enabled) {
+    return url;
+  }
+
+  const content =
+    platform === "ios" ? "app_store_button" : "google_play_button";
+
+  if (platform === "android") {
+    return appendQueryParams(url, {
+      referrer: buildAndroidReferrer(tracking, content),
+    });
+  }
+
+  return appendQueryParams(url, {
+    utm_source: tracking.utmSource,
+    utm_medium: tracking.utmMedium,
+    utm_campaign: tracking.campaign ?? "landing_page",
+    utm_content: content,
+    ct: `${tracking.campaign ?? "landing_page"}_${content}`,
+    pt: tracking.iosProviderToken,
+  });
 }
 
 function toHttpsUrl(url: string): string {
@@ -258,20 +338,26 @@ function buildStores(
   iosApp: StoreApp | undefined,
   androidApp: StoreApp | undefined,
   app: AppConfig,
+  config: AppsConfig,
 ): PageData["stores"] {
   const stores: PageData["stores"] = {};
+  const tracking = resolveTrackingConfig(config, app);
 
   if (iosApp) {
+    const url = asString(iosApp.url) ?? "";
+
     stores.ios = {
-      url: asString(iosApp.url) ?? "",
+      url: url ? withStoreTracking(url, "ios", tracking) : "",
       appId: asString(iosApp.appId) ?? app.stores.ios?.appId,
       id: asNumber(iosApp.id) ?? app.stores.ios?.id,
     };
   }
 
   if (androidApp && app.stores.android) {
+    const url = asString(androidApp.url) ?? "";
+
     stores.android = {
-      url: asString(androidApp.url) ?? "",
+      url: url ? withStoreTracking(url, "android", tracking) : "",
       appId: asString(androidApp.appId) ?? app.stores.android.appId,
     };
   }
@@ -373,7 +459,7 @@ async function buildPageData(
       app.overrides?.releaseNotes ??
       asString(primaryData.releaseNotes) ??
       asString(primaryData.recentChanges),
-    stores: buildStores(iosApp, androidApp, app),
+    stores: buildStores(iosApp, androidApp, app, config),
     media,
     seo: {
       title:
