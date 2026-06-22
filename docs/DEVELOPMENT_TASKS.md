@@ -75,20 +75,22 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 
 ---
 
-## Task 4 — apps.config.json + Zod 校验 ⬜
+## Task 4 — apps.config.json + Zod 校验 ✅
 
 **目标：** 创建示例配置与 schema 校验模块。
 
 **交付物：**
-- `apps.config.json`（示例，含 3 类 app 占位）
-- `src/lib/config.ts` + `src/lib/config.schema.ts`
-- 单元测试或 `npm run validate:config` 脚本
+- [x] `apps.config.json` — 4 个示例 App（3 enabled + 1 disabled），覆盖三套 template
+- [x] `src/lib/config.schema.ts` — Zod schema + 导出类型
+- [x] `src/lib/config.ts` — `loadAppsConfig`, `getEnabledApps`, `getAppCanonicalUrl` 等
+- [x] `scripts/validate-config.ts` + `npm run validate:config`
 
 **自检：**
-- [ ] 合法 config 通过
-- [ ] 非法 slug / 缺 stores 报错清晰
+- [x] 合法 config 通过 `validate:config`
+- [x] 重复 slug / 非法 slug / 未知 template 均拒绝
+- [x] `npm run lint` / `npm run build` 通过
 
-**状态：** ⬜ 待办
+**状态：** ✅ 完成，⏸ **等待用户确认后进入 Task 5**
 
 ---
 
@@ -195,3 +197,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 | 2026-06-18 | Task 1 | 初始文档输出 |
 | 2026-06-18 | Task 2 | create-next-app 16.2.9，lint/build/dev 自检通过 |
 | 2026-06-18 | Task 3 | shadcn/ui base-nova，5 个基础组件，lint/build 通过 |
+| 2026-06-18 | Task 4 | apps.config.json + Zod + validate:config |

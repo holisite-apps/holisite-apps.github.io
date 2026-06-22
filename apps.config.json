@@ -1,0 +1,156 @@
+{
+  "site": {
+    "name": "Faith Apps Studio",
+    "url": "https://username.github.io",
+    "locale": "en",
+    "description": "Bible and lifestyle apps for daily inspiration.",
+    "githubPages": {
+      "repository": "username/username.github.io",
+      "basePath": "",
+      "customDomain": ""
+    },
+    "home": {
+      "headline": "Faith Apps Studio",
+      "subheadline": "Thoughtful apps for daily life",
+      "intro": "We build Bible and lifestyle apps with care for reading, reflection, and everyday tools.",
+      "values": [
+        {
+          "title": "Scripture focused",
+          "description": "Apps designed around daily reading and devotion."
+        },
+        {
+          "title": "Designed for you",
+          "description": "Clear, accessible experiences on iOS and Android."
+        },
+        {
+          "title": "Privacy first",
+          "description": "We respect your data and privacy."
+        }
+      ]
+    }
+  },
+  "templates": {
+    "bible": {
+      "label": "Bible",
+      "description": "Classic bible app landing"
+    },
+    "women-bible": {
+      "label": "Women Bible",
+      "description": "Women-focused bible app landing"
+    },
+    "shopping": {
+      "label": "Shopping Sheet",
+      "description": "Deal / sheet shopping app landing"
+    }
+  },
+  "apps": [
+    {
+      "slug": "holy-bible-daily",
+      "template": "bible",
+      "enabled": true,
+      "priority": 1,
+      "stores": {
+        "ios": {
+          "appId": "com.example.holybible",
+          "country": "us"
+        },
+        "android": {
+          "appId": "com.example.holybible",
+          "country": "us",
+          "lang": "en"
+        }
+      },
+      "seo": {
+        "title": "Holy Bible Daily - Scripture & Devotion App",
+        "description": "Read the Bible daily with plans, audio, and offline access. Download on App Store and Google Play."
+      },
+      "overrides": {
+        "tagline": "Scripture for every moment of your day"
+      },
+      "features": [
+        {
+          "title": "Daily Reading Plans",
+          "description": "Structured plans for every book of the Bible."
+        },
+        {
+          "title": "Offline Access",
+          "description": "Read anywhere without an internet connection."
+        }
+      ],
+      "links": {
+        "privacy": "https://example.com/privacy",
+        "support": "mailto:support@example.com"
+      }
+    },
+    {
+      "slug": "women-bible-journey",
+      "template": "women-bible",
+      "enabled": true,
+      "priority": 2,
+      "stores": {
+        "ios": {
+          "id": 1234567890,
+          "country": "us"
+        }
+      },
+      "overrides": {
+        "tagline": "A daily devotion made for you"
+      }
+    },
+    {
+      "slug": "somebuy-sheet",
+      "template": "shopping",
+      "enabled": true,
+      "priority": 3,
+      "stores": {
+        "ios": {
+          "appId": "com.example.somebuy"
+        },
+        "android": {
+          "appId": "com.example.somebuy"
+        }
+      },
+      "seo": {
+        "title": "SomeBuy Sheet - Smart Shopping Lists",
+        "description": "Track deals and organize shopping sheets in one app."
+      },
+      "valueProps": [
+        {
+          "icon": "wallet",
+          "title": "Save Money",
+          "description": "Track deals in one place."
+        },
+        {
+          "icon": "list",
+          "title": "Organize",
+          "description": "Keep shopping sheets in one app."
+        },
+        {
+          "icon": "bell",
+          "title": "Alerts",
+          "description": "Never miss a price drop."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is SomeBuy Sheet free?",
+          "answer": "Yes, the app is free to download."
+        },
+        {
+          "question": "How do shopping sheets work?",
+          "answer": "Import or create sheets to track items and compare prices."
+        }
+      ]
+    },
+    {
+      "slug": "android-only-bible",
+      "template": "bible",
+      "enabled": false,
+      "stores": {
+        "android": {
+          "appId": "com.example.androidbible"
+        }
+      }
+    }
+  ]
+}
