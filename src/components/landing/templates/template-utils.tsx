@@ -594,6 +594,10 @@ export function buildSoftwareApplicationJsonLd(app: GeneratedAppData) {
   const downloadUrls = [app.stores.ios?.url, app.stores.android?.url].filter(
     (url): url is string => Boolean(url),
   );
+  const origin = new URL(app.seo.canonical).origin;
+  const toAbsolute = (path?: string): string | undefined =>
+    path ? new URL(path, origin).toString() : undefined;
+  const hasRating = Boolean(app.rating && app.rating.count > 0 && app.rating.score > 0);
 
   return {
     "@context": "https://schema.org",
@@ -605,8 +609,10 @@ export function buildSoftwareApplicationJsonLd(app: GeneratedAppData) {
       app.hasIos ? "iOS" : undefined,
       app.hasAndroid ? "Android" : undefined,
     ].filter(Boolean),
-    image: app.media.icon,
-    screenshot: app.media.screenshots,
+    image: toAbsolute(app.media.icon),
+    screenshot: app.media.screenshots
+      .map((screenshot) => toAbsolute(screenshot))
+      .filter((url): url is string => Boolean(url)),
     downloadUrl: downloadUrls,
     softwareVersion: app.version,
     author: app.developer
@@ -615,13 +621,14 @@ export function buildSoftwareApplicationJsonLd(app: GeneratedAppData) {
           name: app.developer,
         }
       : undefined,
-    aggregateRating: app.rating
-      ? {
-          "@type": "AggregateRating",
-          ratingValue: app.rating.score,
-          ratingCount: app.rating.count,
-        }
-      : undefined,
+    aggregateRating:
+      hasRating && app.rating
+        ? {
+            "@type": "AggregateRating",
+            ratingValue: app.rating.score,
+            ratingCount: app.rating.count,
+          }
+        : undefined,
     offers: {
       "@type": "Offer",
       price: "0",
