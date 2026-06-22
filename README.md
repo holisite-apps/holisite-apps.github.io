@@ -35,19 +35,7 @@ npm run fetch    # 抓取商店数据 → data/
 
 ## Firebase 统计
 
-复制 `.env.example` 为 `.env.local`，填入 Firebase Console 里的 Web App 配置。缺少配置时统计会自动禁用，不影响构建。
-
-部署到 GitHub Pages 时，在仓库 Settings → Secrets and variables → Actions → Variables 中添加同名变量：
-
-```bash
-NEXT_PUBLIC_FIREBASE_API_KEY
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-NEXT_PUBLIC_FIREBASE_PROJECT_ID
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-NEXT_PUBLIC_FIREBASE_APP_ID
-NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-```
+`.env.local` 中保存 Firebase Console 的 Web App 配置。该文件已允许提交，GitHub Actions checkout 后会由 Next.js 自动读取。缺少配置时统计会自动禁用，不影响构建。
 
 ## 部署
 
@@ -64,7 +52,7 @@ npm run build
 
 1. 将 `apps.config.json` 里的 `username` 替换为真实 GitHub 用户名。
 2. 在 GitHub 仓库 Settings → Pages 中选择 **GitHub Actions**。
-3. 如需启用 Firebase 统计，添加上方 `NEXT_PUBLIC_FIREBASE_*` Variables。
+3. 确认 `.env.local` 已随代码提交，以便线上构建启用 Firebase 统计。
 
 ## 项目结构（当前）
 
