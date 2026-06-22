@@ -43,6 +43,12 @@ jobs:
       - name: Validate app configuration
         run: npm run validate:config
 
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
@@ -60,4 +66,4 @@ jobs:
             ## Review checklist
             - Check that competitor names are used only as related/search context.
             - Confirm no app claims to be an official competitor property.
-            - Run `npm run fetch && npm run build` after merge to regenerate pages.
+            - Confirm the workflow validation passed before merge.
