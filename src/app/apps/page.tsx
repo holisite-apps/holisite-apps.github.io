@@ -98,10 +98,6 @@ function getDownloadSortValue(app: GeneratedAppData): number {
   return app.stores.android?.minInstalls ?? 0;
 }
 
-function formatInstallCount(installs?: string) {
-  return installs ? `${installs} installs` : "Downloads not public";
-}
-
 function sortByDownloads(apps: GeneratedAppData[]) {
   return [...apps].sort((a, b) => {
     const installDelta = getDownloadSortValue(b) - getDownloadSortValue(a);
@@ -242,9 +238,6 @@ export default function AppsPage() {
                             {meta.label}
                           </Badge>
                           <Badge variant="outline">{getPlatformLabel(app)}</Badge>
-                          <Badge variant="outline">
-                            {formatInstallCount(app.stores.android?.installs)}
-                          </Badge>
                         </div>
                         <CardTitle className="text-2xl tracking-tight">
                           <Link href={`/apps/${app.slug}/`}>{app.name}</Link>
