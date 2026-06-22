@@ -33,16 +33,23 @@
 
 `apps.config.json` 中 `site.url` 必须为 `https://username.github.io`（无尾斜杠）。
 
-## GitHub Actions 工作流（概念）
+## GitHub Actions 工作流
+
+已实现：`.github/workflows/deploy.yml`
 
 ```yaml
-# .github/workflows/deploy.yml（后续任务实现）
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,11 +58,17 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm ci
+      - run: npm run validate:config
       - run: npm run fetch   # 联网抓取，生成 data/
-      - run: npm run build   # 或 fetch 已含在 build script
+      - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/deploy-pages@v4
 ```
 
@@ -63,6 +76,23 @@ jobs:
 
 Repository Settings → Actions → General → Workflow permissions: Read and write  
 Settings → Pages → Source: GitHub Actions
+
+### 上线前必改
+
+`apps.config.json` 仍包含占位：
+
+```json
+{
+  "site": {
+    "url": "https://username.github.io",
+    "githubPages": {
+      "repository": "username/username.github.io"
+    }
+  }
+}
+```
+
+部署前把 `username` 替换为真实 GitHub 用户名，否则 sitemap、robots、canonical、Open Graph URL 都会指向占位域名。
 
 ## 本地预览静态站
 

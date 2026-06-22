@@ -220,15 +220,23 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 
 ---
 
-## Task 11 — GitHub Actions 部署 ⬜
+## Task 11 — GitHub Actions 部署 ✅
 
 **目标：** push main 自动 fetch + build + deploy Pages。
 
-**自检：**
-- [ ] CI 绿
-- [ ] Pages 可访问
+**交付物：**
+- [x] `.github/workflows/deploy.yml`
+- [x] CI 步骤：checkout → setup-node → npm ci → validate:config → fetch → build → upload artifact → deploy Pages
+- [x] `docs/DEPLOYMENT.md` 更新 workflow 与上线前 `username` 替换说明
 
-**状态：** ⬜ 待办
+**自检：**
+- [x] 本地模拟 CI 核心流程：`validate:config` → `fetch` → `build` 通过
+- [x] `.github/workflows/deploy.yml` 存在
+- [x] `npm run lint` / `npm run build` 通过
+- [ ] CI 绿（需 push 到 GitHub 后确认）
+- [ ] Pages 可访问（需仓库 Settings → Pages 设为 GitHub Actions 后确认）
+
+**状态：** ✅ 本地完成，⏸ **等待 GitHub 端配置与首次运行确认**
 
 ---
 
@@ -246,3 +254,4 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --
 | 2026-06-22 | Task 8 | 三套模板 + `/apps/[slug]` SSG 路由 |
 | 2026-06-22 | Task 9 | 正式品牌首页，移除临时 smoke tests |
 | 2026-06-22 | Task 10 | sitemap.xml + robots.txt 静态导出 |
+| 2026-06-22 | Task 11 | GitHub Actions Pages 部署 workflow |

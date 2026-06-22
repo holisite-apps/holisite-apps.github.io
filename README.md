@@ -31,6 +31,22 @@ npm run validate:config  # 校验 apps.config.json
 npm run fetch    # 抓取商店数据 → data/
 ```
 
+## 部署
+
+已提供 `.github/workflows/deploy.yml`。推送到 `main` 后，GitHub Actions 会执行：
+
+```bash
+npm ci
+npm run validate:config
+npm run fetch
+npm run build
+```
+
+并将 `out/` 部署到 GitHub Pages。首次上线前：
+
+1. 将 `apps.config.json` 里的 `username` 替换为真实 GitHub 用户名。
+2. 在 GitHub 仓库 Settings → Pages 中选择 **GitHub Actions**。
+
 ## 项目结构（当前）
 
 ```
