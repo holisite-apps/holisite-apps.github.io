@@ -11,6 +11,7 @@
 | [docs/TEMPLATES.md](./docs/TEMPLATES.md) | 三套模板线框 |
 | [docs/DATA_FETCH.md](./docs/DATA_FETCH.md) | fetch 与 `data/` |
 | [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) | GitHub Pages |
+| [docs/SEO_GUIDE.md](./docs/SEO_GUIDE.md) | Google SEO 指南与本项目落地规范 |
 | [docs/DEVELOPMENT_TASKS.md](./docs/DEVELOPMENT_TASKS.md) | **分步任务清单** |
 
 ## 技术栈
