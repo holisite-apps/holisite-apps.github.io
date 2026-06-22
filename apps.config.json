@@ -45,110 +45,84 @@
   },
   "apps": [
     {
-      "slug": "holy-bible-daily",
-      "template": "bible",
+      "slug": "womens-bible",
+      "name": "Women's Bible",
+      "template": "women-bible",
       "enabled": true,
       "priority": 1,
       "stores": {
         "ios": {
-          "appId": "com.example.holybible",
+          "appId": "graceapp.womensbible",
           "country": "us"
         },
         "android": {
-          "appId": "com.example.holybible",
+          "appId": "womensbible.study.devotional.dailyscripture.bible",
           "country": "us",
           "lang": "en"
         }
-      },
-      "seo": {
-        "title": "Holy Bible Daily - Scripture & Devotion App",
-        "description": "Read the Bible daily with plans, audio, and offline access. Download on App Store and Google Play."
-      },
-      "overrides": {
-        "tagline": "Scripture for every moment of your day"
-      },
-      "features": [
-        {
-          "title": "Daily Reading Plans",
-          "description": "Structured plans for every book of the Bible."
-        },
-        {
-          "title": "Offline Access",
-          "description": "Read anywhere without an internet connection."
-        }
-      ],
-      "links": {
-        "privacy": "https://example.com/privacy",
-        "support": "mailto:support@example.com"
       }
     },
     {
-      "slug": "women-bible-journey",
-      "template": "women-bible",
+      "slug": "nkjv-bible",
+      "name": "NKJV Bible",
+      "template": "bible",
       "enabled": true,
       "priority": 2,
       "stores": {
         "ios": {
-          "id": 1234567890,
+          "appId": "nkjv.biblequiz",
           "country": "us"
+        },
+        "android": {
+          "appId": "bible.nkjv.scripture.christian.studybible.dailyverses.offlinebible.devotionals.holybible",
+          "country": "us",
+          "lang": "en"
         }
-      },
-      "overrides": {
-        "tagline": "A daily devotion made for you"
       }
     },
     {
-      "slug": "somebuy-sheet",
-      "template": "shopping",
+      "slug": "niv-bible",
+      "name": "NIV Bible",
+      "template": "bible",
       "enabled": true,
       "priority": 3,
       "stores": {
         "ios": {
-          "appId": "com.example.somebuy"
+          "appId": "nivbible.offline.devotion.study",
+          "country": "us"
         },
         "android": {
-          "appId": "com.example.somebuy"
+          "appId": "bible.niv.holybible.offlinebible.dailyverse.biblestudy",
+          "country": "us",
+          "lang": "en"
         }
-      },
-      "seo": {
-        "title": "SomeBuy Sheet - Smart Shopping Lists",
-        "description": "Track deals and organize shopping sheets in one app."
-      },
-      "valueProps": [
-        {
-          "icon": "wallet",
-          "title": "Save Money",
-          "description": "Track deals in one place."
-        },
-        {
-          "icon": "list",
-          "title": "Organize",
-          "description": "Keep shopping sheets in one app."
-        },
-        {
-          "icon": "bell",
-          "title": "Alerts",
-          "description": "Never miss a price drop."
-        }
-      ],
-      "faq": [
-        {
-          "question": "Is SomeBuy Sheet free?",
-          "answer": "Yes, the app is free to download."
-        },
-        {
-          "question": "How do shopping sheets work?",
-          "answer": "Import or create sheets to track items and compare prices."
-        }
-      ]
+      }
     },
     {
-      "slug": "android-only-bible",
-      "template": "bible",
-      "enabled": false,
+      "slug": "womens-niv-bible",
+      "name": "Women's NIV Bible",
+      "template": "women-bible",
+      "enabled": true,
+      "priority": 4,
       "stores": {
         "android": {
-          "appId": "com.example.androidbible"
+          "appId": "nivbible.womenbible.dailydevotional.plan.verse.faith.offline.study",
+          "country": "us",
+          "lang": "en"
+        }
+      }
+    },
+    {
+      "slug": "womens-nkjv-bible-devotionals",
+      "name": "Women's NKJV Bible & Devotionals",
+      "template": "women-bible",
+      "enabled": true,
+      "priority": 5,
+      "stores": {
+        "android": {
+          "appId": "nkjv.womensbible.devotionals.women.bible.faith.growth",
+          "country": "us",
+          "lang": "en"
         }
       }
     }
