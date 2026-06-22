@@ -218,7 +218,9 @@ export function AboutSection({
       <h2 className="mt-2 text-3xl font-semibold tracking-tight">About {app.name}</h2>
       <div className="mt-6 space-y-4 text-base leading-8 text-muted-foreground">
         {paragraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
+          <p className="whitespace-pre-line" key={paragraph}>
+            {paragraph}
+          </p>
         ))}
       </div>
     </section>
