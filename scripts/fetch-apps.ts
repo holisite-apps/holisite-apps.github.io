@@ -63,6 +63,8 @@ type PageData = {
     android?: {
       url: string;
       appId: string;
+      installs?: string;
+      minInstalls?: number;
     };
   };
   media: {
@@ -371,6 +373,8 @@ function buildStores(
     stores.android = {
       url: url ? withStoreTracking(url, "android", tracking) : "",
       appId: asString(androidApp.appId) ?? app.stores.android.appId,
+      installs: asString(androidApp.installs),
+      minInstalls: asNumber(androidApp.minInstalls),
     };
   }
 

@@ -64,12 +64,54 @@ export function generateMetadata(): Metadata {
   };
 }
 
+const templateSections = [
+  {
+    key: "women-bible",
+    title: "Women Bible Apps",
+    description: "Bible, devotion, prayer, and daily scripture apps for women.",
+  },
+  {
+    key: "bible",
+    title: "Bible Apps",
+    description: "Scripture reading, study, devotion, and offline Bible apps.",
+  },
+  {
+    key: "shopping",
+    title: "Shopping Apps",
+    description: "Product discovery, shopping sheets, and organized product lists.",
+  },
+] satisfies Array<{
+  key: GeneratedAppData["template"];
+  title: string;
+  description: string;
+}>;
+
 function getPlatformLabel(app: GeneratedAppData) {
   if (app.hasIos && app.hasAndroid) {
     return "iOS + Android";
   }
 
   return app.hasIos ? "iOS" : "Android";
+}
+
+function getDownloadSortValue(app: GeneratedAppData): number {
+  return app.stores.android?.minInstalls ?? 0;
+}
+
+function formatInstallCount(installs?: string) {
+  return installs ? `${installs} installs` : "Downloads not public";
+}
+
+function sortByDownloads(apps: GeneratedAppData[]) {
+  return [...apps].sort((a, b) => {
+    const installDelta = getDownloadSortValue(b) - getDownloadSortValue(a);
+
+    if (installDelta !== 0) {
+      return installDelta;
+    }
+
+    return a.name.localeCompare(b.name);
+  });
 }
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -85,15 +127,22 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
 
 export default function AppsPage() {
   const config = loadAppsConfig();
-  const apps = loadAllGeneratedApps().sort((a, b) =>
-    a.name.localeCompare(b.name),
-  );
+  const apps = loadAllGeneratedApps();
+  const groupedApps = templateSections
+    .map((section) => ({
+      ...section,
+      apps: sortByDownloads(
+        apps.filter((app) => app.template === section.key),
+      ),
+    }))
+    .filter((section) => section.apps.length > 0);
+  const sortedApps = groupedApps.flatMap((section) => section.apps);
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `${config.site.name} apps`,
     description: `Mobile apps by ${config.site.name} for Bible study, devotion, shopping lists, and everyday workflows.`,
-    itemListElement: apps.map((app, index) => ({
+    itemListElement: sortedApps.map((app, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: app.name,
@@ -136,75 +185,90 @@ export default function AppsPage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {apps.map((app) => {
-            const meta = templateMeta[app.template];
-            const Icon = meta.icon;
+      <section className="mx-auto grid w-full max-w-6xl gap-14 px-4 pb-20 sm:px-6 lg:px-8">
+        {groupedApps.map((section) => (
+          <div key={section.key}>
+            <div className="mb-5 max-w-3xl">
+              <h2 className="text-3xl font-semibold tracking-tight">
+                {section.title}
+              </h2>
+              <p className="mt-2 text-base leading-7 text-[#6d5c4a]">
+                {section.description}
+              </p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {section.apps.map((app) => {
+                const meta = templateMeta[app.template];
+                const Icon = meta.icon;
 
-            return (
-              <Card
-                className="group rounded-[2rem] border-[#e7d7bd] bg-white/75 shadow-sm transition hover:-translate-y-1 hover:bg-white hover:shadow-xl"
-                key={app.slug}
-              >
-                <CardHeader className="gap-5 p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      {app.media.icon ? (
-                        <Image
-                          alt={`${app.name} icon`}
-                          className="size-16 rounded-2xl border border-[#eadcc5] object-cover shadow-sm"
-                          height={64}
-                          src={app.media.icon}
-                          width={64}
-                        />
-                      ) : (
-                        <span className="grid size-16 place-items-center rounded-2xl bg-[#1d1712] text-xl font-semibold text-white">
-                          {app.name.slice(0, 1)}
-                        </span>
-                      )}
-                      <span
-                        className={`grid size-10 place-items-center rounded-2xl ${meta.accent}`}
-                      >
-                        <Icon className="size-5" aria-hidden="true" />
-                      </span>
-                    </div>
-                    <ArrowUpRightIcon
-                      className="size-5 text-[#b39870] transition group-hover:translate-x-1 group-hover:-translate-y-1"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <div>
-                    <div className="mb-3 flex flex-wrap gap-2">
-                      <Badge
-                        className="bg-[#f1e5d0] text-[#8a6418]"
-                        variant="secondary"
-                      >
-                        {meta.label}
-                      </Badge>
-                      <Badge variant="outline">{getPlatformLabel(app)}</Badge>
-                    </div>
-                    <CardTitle className="text-2xl tracking-tight">
-                      <Link href={`/apps/${app.slug}/`}>{app.name}</Link>
-                    </CardTitle>
-                    <CardDescription className="mt-3 line-clamp-3 text-base leading-7 text-[#6d5c4a]">
-                      {app.tagline || app.seo.description}
-                    </CardDescription>
-                  </div>
-                </CardHeader>
-                <CardContent className="px-6 pb-6">
-                  <Link
-                    className="inline-flex items-center gap-2 rounded-full bg-[#1d1712] px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#3a2b20]"
-                    href={`/apps/${app.slug}/`}
+                return (
+                  <Card
+                    className="group rounded-[2rem] border-[#e7d7bd] bg-white/75 shadow-sm transition hover:-translate-y-1 hover:bg-white hover:shadow-xl"
+                    key={app.slug}
                   >
-                    View {app.name} page
-                    <ArrowUpRightIcon className="size-4" aria-hidden="true" />
-                  </Link>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+                    <CardHeader className="gap-5 p-6">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex items-center gap-4">
+                          {app.media.icon ? (
+                            <Image
+                              alt={`${app.name} icon`}
+                              className="size-16 rounded-2xl border border-[#eadcc5] object-cover shadow-sm"
+                              height={64}
+                              src={app.media.icon}
+                              width={64}
+                            />
+                          ) : (
+                            <span className="grid size-16 place-items-center rounded-2xl bg-[#1d1712] text-xl font-semibold text-white">
+                              {app.name.slice(0, 1)}
+                            </span>
+                          )}
+                          <span
+                            className={`grid size-10 place-items-center rounded-2xl ${meta.accent}`}
+                          >
+                            <Icon className="size-5" aria-hidden="true" />
+                          </span>
+                        </div>
+                        <ArrowUpRightIcon
+                          className="size-5 text-[#b39870] transition group-hover:translate-x-1 group-hover:-translate-y-1"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <div>
+                        <div className="mb-3 flex flex-wrap gap-2">
+                          <Badge
+                            className="bg-[#f1e5d0] text-[#8a6418]"
+                            variant="secondary"
+                          >
+                            {meta.label}
+                          </Badge>
+                          <Badge variant="outline">{getPlatformLabel(app)}</Badge>
+                          <Badge variant="outline">
+                            {formatInstallCount(app.stores.android?.installs)}
+                          </Badge>
+                        </div>
+                        <CardTitle className="text-2xl tracking-tight">
+                          <Link href={`/apps/${app.slug}/`}>{app.name}</Link>
+                        </CardTitle>
+                        <CardDescription className="mt-3 line-clamp-3 text-base leading-7 text-[#6d5c4a]">
+                          {app.tagline || app.seo.description}
+                        </CardDescription>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="px-6 pb-6">
+                      <Link
+                        className="inline-flex items-center gap-2 rounded-full bg-[#1d1712] px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#3a2b20]"
+                        href={`/apps/${app.slug}/`}
+                      >
+                        View {app.name} page
+                        <ArrowUpRightIcon className="size-4" aria-hidden="true" />
+                      </Link>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </section>
 
       <footer className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-10 text-sm text-[#6d5c4a] sm:px-6 lg:px-8">

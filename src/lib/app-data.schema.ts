@@ -36,6 +36,8 @@ export const storeLinksSchema = z.object({
     .object({
       url: z.string().url(),
       appId: z.string().min(1),
+      installs: z.string().optional(),
+      minInstalls: z.number().int().nonnegative().optional(),
     })
     .optional(),
 });
