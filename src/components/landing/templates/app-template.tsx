@@ -8,16 +8,36 @@ import type { GeneratedAppData } from "@/lib/app-data.schema";
 export function AppTemplate({
   app,
   brandName,
+  relatedApps,
 }: {
   app: GeneratedAppData;
   brandName: string;
+  relatedApps: GeneratedAppData[];
 }) {
   switch (app.template) {
     case "bible":
-      return <BibleTemplate app={app} brandName={brandName} />;
+      return (
+        <BibleTemplate
+          app={app}
+          brandName={brandName}
+          relatedApps={relatedApps}
+        />
+      );
     case "women-bible":
-      return <WomenBibleTemplate app={app} brandName={brandName} />;
+      return (
+        <WomenBibleTemplate
+          app={app}
+          brandName={brandName}
+          relatedApps={relatedApps}
+        />
+      );
     case "shopping":
-      return <ShoppingTemplate app={app} brandName={brandName} />;
+      return (
+        <ShoppingTemplate
+          app={app}
+          brandName={brandName}
+          relatedApps={relatedApps}
+        />
+      );
   }
 }

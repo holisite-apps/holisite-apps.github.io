@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
+  ArrowUpRightIcon,
   BookOpenIcon,
   CheckCircle2Icon,
   HeartIcon,
@@ -28,6 +31,7 @@ import { cn } from "@/lib/utils";
 export type LandingTemplateProps = {
   app: GeneratedAppData;
   brandName: string;
+  relatedApps: GeneratedAppData[];
 };
 
 export type Feature = {
@@ -48,27 +52,40 @@ function getPlatformText(app: GeneratedAppData): string {
   return app.hasIos ? "iPhone and iPad" : "Android devices";
 }
 
+function getStoreText(app: GeneratedAppData): string {
+  if (app.hasIos && app.hasAndroid) {
+    return "the App Store and Google Play";
+  }
+
+  return app.hasIos ? "the App Store" : "Google Play";
+}
+
+function getPrimaryTerms(app: GeneratedAppData, count = 3): string[] {
+  return uniqueTerms([
+    ...app.seo.targetKeywords,
+    ...app.seo.relatedTerms,
+    ...(app.seo.keywords ?? []),
+  ]).slice(0, count);
+}
+
 export function defaultAppFaq(app: GeneratedAppData): AppFaqItem[] {
-  const storeText = app.hasIos && app.hasAndroid
-    ? "the App Store and Google Play"
-    : app.hasIos
-      ? "the App Store"
-      : "Google Play";
+  const storeText = getStoreText(app);
   const platformText = getPlatformText(app);
+  const [primaryTerm, secondaryTerm] = getPrimaryTerms(app, 2);
 
   if (app.template === "shopping") {
     return [
       {
         question: `What is ${app.name} used for?`,
-        answer: `${app.name} helps users discover products, save links, organize shopping finds, and manage product lists in a cleaner workflow.`,
+        answer: `${app.name} helps users discover products, save links, organize shopping finds, and manage product lists in a cleaner workflow${primaryTerm ? ` for ${primaryTerm}` : ""}.`,
       },
       {
-        question: `Does ${app.name} support ${platformText}?`,
-        answer: `${app.name} is available for ${platformText}. Use the official store button on this page to open ${storeText}.`,
+        question: `Can ${app.name} help with ${secondaryTerm ?? "shopping agent workflows"}?`,
+        answer: `${app.name} is designed for product discovery, saved links, product lists, and spreadsheet-style organization across related shopping workflows.`,
       },
       {
-        question: `Is ${app.name} an official store or shopping agent?`,
-        answer: `${app.name} is a product discovery and organization app. Purchases are completed externally through the relevant shopping or marketplace workflow.`,
+        question: `Where can I download ${app.name}?`,
+        answer: `${app.name} is available for ${platformText}. Use the official download button on this page to open ${storeText}. Purchases are completed externally through the relevant shopping or marketplace workflow.`,
       },
     ];
   }
@@ -76,15 +93,15 @@ export function defaultAppFaq(app: GeneratedAppData): AppFaqItem[] {
   return [
     {
       question: `What is ${app.name}?`,
-      answer: `${app.name} is a Bible app designed for scripture reading, daily devotion, prayer, and focused Bible study.`,
+      answer: `${app.name} is a Bible app designed for scripture reading, daily devotion, prayer, and focused Bible study${primaryTerm ? `, including ${primaryTerm}` : ""}.`,
     },
     {
-      question: `Can I download ${app.name} on ${platformText}?`,
-      answer: `${app.name} is available for ${platformText}. Use the official store button on this page to open ${storeText}.`,
+      question: `Does ${app.name} support ${secondaryTerm ?? "daily devotionals"}?`,
+      answer: `${app.name} focuses on daily scripture, prayer, devotional reading, and Bible study routines for ${platformText}.`,
     },
     {
-      question: `Who publishes ${app.name}?`,
-      answer: `${app.name} is published by ${app.developer ?? "Holisite"}. This landing page links to the official app store listing for download.`,
+      question: `Where can I download ${app.name}?`,
+      answer: `${app.name} is published by ${app.developer ?? "Holisite"} and is available through ${storeText}. This landing page links to the official app store listing for download.`,
     },
   ];
 }
@@ -224,6 +241,171 @@ export function AboutSection({
         ))}
       </div>
     </section>
+  );
+}
+
+function buildIntentFeatures(app: GeneratedAppData): Feature[] {
+  const [primaryTerm, secondaryTerm, tertiaryTerm] = getPrimaryTerms(app, 3);
+  const platformText = getPlatformText(app);
+
+  if (app.template === "shopping") {
+    return [
+      {
+        title: `Organize ${primaryTerm ?? "shopping finds"}`,
+        description: `${app.name} gives product research a clearer place to live, from saved product links to collections and spreadsheet-style lists.`,
+      },
+      {
+        title: `Support ${secondaryTerm ?? "shopping agent workflows"}`,
+        description: `Use ${app.name} to keep related finds, product notes, and marketplace links easier to review before you buy.`,
+      },
+      {
+        title: `Review product lists on ${platformText}`,
+        description: `${app.name} is built for ${platformText}, so you can revisit shopping ideas and product discovery lists when you need them.`,
+      },
+    ];
+  }
+
+  if (app.template === "women-bible") {
+    return [
+      {
+        title: `Daily rhythm for ${primaryTerm ?? "women's Bible study"}`,
+        description: `${app.name} helps women build a steady scripture habit with devotional reading, prayer, and reflection in one place.`,
+      },
+      {
+        title: `Prayer and study for real life`,
+        description: `Use ${app.name} for daily scripture, ${secondaryTerm ?? "prayer plans"}, Bible notes, and quiet moments of encouragement.`,
+      },
+      {
+        title: `Available on ${platformText}`,
+        description: `${app.name} links directly to ${getStoreText(app)}, helping readers start with the official app listing.`,
+      },
+    ];
+  }
+
+  return [
+    {
+      title: `Focused ${primaryTerm ?? "Bible study"}`,
+      description: `${app.name} supports scripture reading, devotional reflection, and a simpler Bible study routine.`,
+    },
+    {
+      title: `Built for ${secondaryTerm ?? "daily Bible reading"}`,
+      description: `Read, reflect, and return to scripture with features designed around ${tertiaryTerm ?? "offline Bible access"} and daily faith habits.`,
+    },
+    {
+      title: `Download on ${platformText}`,
+      description: `${app.name} is available through ${getStoreText(app)} with official store links on this page.`,
+    },
+  ];
+}
+
+export function AppIntentSection({
+  app,
+  title,
+  eyebrow = "Use cases",
+  variant = "default",
+}: {
+  app: GeneratedAppData;
+  title: string;
+  eyebrow?: string;
+  variant?: "default" | "soft" | "shopping";
+}) {
+  return (
+    <SectionShell className="py-14">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          {eyebrow}
+        </p>
+        <h2 className="mt-2 text-3xl font-semibold tracking-tight">{title}</h2>
+        <p className="mt-3 text-base leading-7 text-muted-foreground">
+          {app.seo.description}
+        </p>
+      </div>
+      <FeatureGrid
+        className="mt-7"
+        features={buildIntentFeatures(app)}
+        variant={variant}
+      />
+    </SectionShell>
+  );
+}
+
+function getTemplateLabel(template: GeneratedAppData["template"]): string {
+  switch (template) {
+    case "bible":
+      return "Bible";
+    case "women-bible":
+      return "Women Bible";
+    case "shopping":
+      return "Shopping";
+  }
+}
+
+export function RelatedAppsSection({
+  apps,
+  title,
+  className,
+}: {
+  apps: GeneratedAppData[];
+  title: string;
+  className?: string;
+}) {
+  if (apps.length === 0) {
+    return null;
+  }
+
+  return (
+    <SectionShell className={cn("py-14", className)}>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Related apps
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight">{title}</h2>
+        </div>
+        <Link
+          className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+          href="/apps/"
+        >
+          View all apps
+          <ArrowUpRightIcon className="size-4" aria-hidden="true" />
+        </Link>
+      </div>
+
+      <div className="mt-7 grid gap-4 md:grid-cols-3">
+        {apps.map((app) => (
+          <Link
+            className="group rounded-3xl border border-foreground/10 bg-white/75 p-5 shadow-sm transition hover:-translate-y-1 hover:bg-white hover:shadow-lg"
+            href={`/apps/${app.slug}/`}
+            key={app.slug}
+          >
+            <div className="flex items-start gap-4">
+              {app.media.icon ? (
+                <Image
+                  alt={`${app.name} icon`}
+                  className="size-14 rounded-2xl object-cover shadow-sm ring-1 ring-foreground/10"
+                  height={56}
+                  src={app.media.icon}
+                  width={56}
+                />
+              ) : (
+                <span className="grid size-14 place-items-center rounded-2xl bg-foreground text-background">
+                  {app.name.slice(0, 1)}
+                </span>
+              )}
+              <div className="min-w-0">
+                <Badge variant="secondary">{getTemplateLabel(app.template)}</Badge>
+                <h3 className="mt-3 text-lg font-semibold tracking-tight group-hover:text-primary">
+                  {app.name}
+                </h3>
+                <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">
+                  {app.seo.description}
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </SectionShell>
   );
 }
 

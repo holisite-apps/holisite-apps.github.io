@@ -8,11 +8,13 @@ import {
 } from "@/components/landing/shared";
 import {
   AboutSection,
+  AppIntentSection,
   AppPageFooter,
   DownloadCta,
   FaqSection,
   FeatureGrid,
   JsonLd,
+  RelatedAppsSection,
   SectionShell,
   SeoKeywordSection,
   buildBreadcrumbJsonLd,
@@ -24,7 +26,11 @@ import {
   type LandingTemplateProps,
 } from "@/components/landing/templates/template-utils";
 
-export function BibleTemplate({ app, brandName }: LandingTemplateProps) {
+export function BibleTemplate({
+  app,
+  brandName,
+  relatedApps,
+}: LandingTemplateProps) {
   const updated = formatDate(app.updatedAt);
   const faqItems = getAppFaq(app);
 
@@ -86,6 +92,12 @@ export function BibleTemplate({ app, brandName }: LandingTemplateProps) {
 
         <AboutSection app={app} />
 
+        <AppIntentSection
+          app={app}
+          title={`How ${app.name} supports Bible study`}
+          eyebrow="Study use cases"
+        />
+
         <SeoKeywordSection
           app={app}
           title={`Bible study topics for ${app.name}`}
@@ -93,6 +105,11 @@ export function BibleTemplate({ app, brandName }: LandingTemplateProps) {
         />
 
         <FaqSection items={faqItems} />
+
+        <RelatedAppsSection
+          apps={relatedApps}
+          title={`More Bible apps from ${brandName}`}
+        />
 
         <SectionShell className="py-8">
           <div className="rounded-2xl border border-[#d9c7ad] bg-white/60 p-5 text-sm text-[#6d5c4a]">

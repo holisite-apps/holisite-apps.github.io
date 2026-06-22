@@ -9,11 +9,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import {
   AboutSection,
+  AppIntentSection,
   AppPageFooter,
   DownloadCta,
   FaqSection,
   FeatureGrid,
   JsonLd,
+  RelatedAppsSection,
   SectionShell,
   SeoKeywordSection,
   buildBreadcrumbJsonLd,
@@ -24,7 +26,11 @@ import {
   type LandingTemplateProps,
 } from "@/components/landing/templates/template-utils";
 
-export function ShoppingTemplate({ app, brandName }: LandingTemplateProps) {
+export function ShoppingTemplate({
+  app,
+  brandName,
+  relatedApps,
+}: LandingTemplateProps) {
   const valueProps = defaultShoppingValueProps(app);
   const heroScreenshot = app.media.screenshots[0];
   const faqItems = getAppFaq(app);
@@ -119,6 +125,13 @@ export function ShoppingTemplate({ app, brandName }: LandingTemplateProps) {
 
         <AboutSection app={app} compact />
 
+        <AppIntentSection
+          app={app}
+          title={`How ${app.name} supports product discovery`}
+          eyebrow="Shopping use cases"
+          variant="shopping"
+        />
+
         <SeoKeywordSection
           app={app}
           title={`Shopping workflows related to ${app.name}`}
@@ -127,6 +140,11 @@ export function ShoppingTemplate({ app, brandName }: LandingTemplateProps) {
         />
 
         <FaqSection items={faqItems} />
+
+        <RelatedAppsSection
+          apps={relatedApps}
+          title={`More shopping and utility apps from ${brandName}`}
+        />
 
         <DownloadCta
           app={app}

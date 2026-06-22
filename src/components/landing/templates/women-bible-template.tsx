@@ -9,11 +9,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import {
   AboutSection,
+  AppIntentSection,
   AppPageFooter,
   DownloadCta,
   FaqSection,
   FeatureGrid,
   JsonLd,
+  RelatedAppsSection,
   SectionShell,
   SeoKeywordSection,
   buildBreadcrumbJsonLd,
@@ -25,7 +27,11 @@ import {
   type LandingTemplateProps,
 } from "@/components/landing/templates/template-utils";
 
-export function WomenBibleTemplate({ app, brandName }: LandingTemplateProps) {
+export function WomenBibleTemplate({
+  app,
+  brandName,
+  relatedApps,
+}: LandingTemplateProps) {
   const faqItems = getAppFaq(app);
 
   return (
@@ -99,6 +105,13 @@ export function WomenBibleTemplate({ app, brandName }: LandingTemplateProps) {
 
           <AboutSection app={app} className="max-w-3xl" compact />
 
+          <AppIntentSection
+            app={app}
+            title={`How ${app.name} supports daily faith`}
+            eyebrow="Devotional use cases"
+            variant="soft"
+          />
+
           <SeoKeywordSection
             app={app}
             title={`Faith topics for ${app.name}`}
@@ -107,6 +120,11 @@ export function WomenBibleTemplate({ app, brandName }: LandingTemplateProps) {
           />
 
           <FaqSection items={faqItems} />
+
+          <RelatedAppsSection
+            apps={relatedApps}
+            title={`More Bible apps from ${brandName}`}
+          />
 
           <DownloadCta
             app={app}

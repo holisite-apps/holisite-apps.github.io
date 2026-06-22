@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { AppTemplate } from "@/components/landing/templates/app-template";
-import { getGeneratedAppSlugs, loadGeneratedAppData } from "@/lib/app-data";
+import {
+  getGeneratedAppSlugs,
+  loadAllGeneratedApps,
+  loadGeneratedAppData,
+} from "@/lib/app-data";
 import { loadAppsConfig } from "@/lib/config";
 
 type AppPageProps = {
@@ -85,6 +89,23 @@ export default async function AppPage({ params }: AppPageProps) {
 
   const config = loadAppsConfig();
   const app = loadGeneratedAppData(slug);
+  const allApps = loadAllGeneratedApps();
+  const relatedApps = [
+    ...allApps.filter(
+      (relatedApp) =>
+        relatedApp.slug !== app.slug && relatedApp.template === app.template,
+    ),
+    ...allApps.filter(
+      (relatedApp) =>
+        relatedApp.slug !== app.slug && relatedApp.template !== app.template,
+    ),
+  ].slice(0, 3);
 
-  return <AppTemplate app={app} brandName={config.site.name} />;
+  return (
+    <AppTemplate
+      app={app}
+      brandName={config.site.name}
+      relatedApps={relatedApps}
+    />
+  );
 }
