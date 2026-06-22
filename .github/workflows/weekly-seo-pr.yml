@@ -46,6 +46,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Fetch app store data
+        run: npm run fetch
+
       - name: Build
         run: npm run build
 
@@ -55,6 +58,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: chore/weekly-seo-optimization
           delete-branch: true
+          add-paths: apps.config.json
           title: "chore: weekly SEO optimization"
           commit-message: "chore: update weekly SEO terms"
           body: |
