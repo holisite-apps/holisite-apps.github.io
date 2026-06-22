@@ -97,13 +97,13 @@ export function WomenBibleTemplate({
 
           <SectionShell className="py-14">
             <FeatureGrid
-              features={defaultBibleFeatures(app).slice(0, 4)}
+              features={defaultBibleFeatures(app)}
               variant="soft"
               className="md:grid-cols-2"
             />
           </SectionShell>
 
-          <AboutSection app={app} className="max-w-3xl" compact />
+          <AboutSection app={app} className="max-w-3xl" />
 
           <AppIntentSection
             app={app}
