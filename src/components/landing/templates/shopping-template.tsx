@@ -6,33 +6,34 @@ import {
   ScreenshotCarousel,
   StoreButtons,
 } from "@/components/landing/shared";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import {
   AboutSection,
   AppPageFooter,
   DownloadCta,
+  FaqSection,
   FeatureGrid,
   JsonLd,
   SectionShell,
   SeoKeywordSection,
+  buildBreadcrumbJsonLd,
+  buildFaqPageJsonLd,
   buildSoftwareApplicationJsonLd,
   defaultShoppingValueProps,
+  getAppFaq,
   type LandingTemplateProps,
 } from "@/components/landing/templates/template-utils";
 
 export function ShoppingTemplate({ app, brandName }: LandingTemplateProps) {
   const valueProps = defaultShoppingValueProps(app);
   const heroScreenshot = app.media.screenshots[0];
+  const faqItems = getAppFaq(app);
 
   return (
     <div className="min-h-svh bg-white text-zinc-950">
       <JsonLd data={buildSoftwareApplicationJsonLd(app)} />
+      <JsonLd data={buildBreadcrumbJsonLd(app)} />
+      <JsonLd data={buildFaqPageJsonLd(faqItems)} />
       <AppHeader
         name={app.name}
         icon={app.media.icon}
@@ -125,19 +126,7 @@ export function ShoppingTemplate({ app, brandName }: LandingTemplateProps) {
           variant="shopping"
         />
 
-        {app.faq.length > 0 ? (
-          <SectionShell className="py-14">
-            <h2 className="text-3xl font-semibold tracking-tight">FAQ</h2>
-            <Accordion className="mt-6 rounded-2xl border p-4">
-              {app.faq.map((item) => (
-                <AccordionItem key={item.question} value={item.question}>
-                  <AccordionTrigger>{item.question}</AccordionTrigger>
-                  <AccordionContent>{item.answer}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </SectionShell>
-        ) : null}
+        <FaqSection items={faqItems} />
 
         <DownloadCta
           app={app}

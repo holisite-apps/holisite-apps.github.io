@@ -72,14 +72,38 @@ function getPlatformLabel(app: GeneratedAppData) {
   return app.hasIos ? "iOS" : "Android";
 }
 
+function JsonLd({ data }: { data: Record<string, unknown> }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
+    />
+  );
+}
+
 export default function AppsPage() {
   const config = loadAppsConfig();
   const apps = loadAllGeneratedApps().sort((a, b) =>
     a.name.localeCompare(b.name),
   );
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${config.site.name} apps`,
+    description: `Mobile apps by ${config.site.name} for Bible study, devotion, shopping lists, and everyday workflows.`,
+    itemListElement: apps.map((app, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: app.name,
+      url: app.seo.canonical,
+    })),
+  };
 
   return (
     <main className="min-h-svh bg-[#fbf7ef] text-[#1d1712]">
+      <JsonLd data={itemListJsonLd} />
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-6 sm:px-6 lg:px-8">
         <Link className="flex items-center gap-3" href="/">
           <span className="grid size-10 place-items-center rounded-2xl bg-[#1d1712] text-sm font-semibold text-white">
@@ -173,7 +197,7 @@ export default function AppsPage() {
                     className="inline-flex items-center gap-2 rounded-full bg-[#1d1712] px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#3a2b20]"
                     href={`/apps/${app.slug}/`}
                   >
-                    View landing page
+                    View {app.name} page
                     <ArrowUpRightIcon className="size-4" aria-hidden="true" />
                   </Link>
                 </CardContent>

@@ -11,20 +11,28 @@ import {
   AboutSection,
   AppPageFooter,
   DownloadCta,
+  FaqSection,
   FeatureGrid,
   JsonLd,
   SectionShell,
   SeoKeywordSection,
+  buildBreadcrumbJsonLd,
+  buildFaqPageJsonLd,
   buildSoftwareApplicationJsonLd,
   defaultBibleFeatures,
   defaultWomenBibleHighlights,
+  getAppFaq,
   type LandingTemplateProps,
 } from "@/components/landing/templates/template-utils";
 
 export function WomenBibleTemplate({ app, brandName }: LandingTemplateProps) {
+  const faqItems = getAppFaq(app);
+
   return (
     <div className="min-h-svh bg-[#fff8f5] text-[#26151b]">
       <JsonLd data={buildSoftwareApplicationJsonLd(app)} />
+      <JsonLd data={buildBreadcrumbJsonLd(app)} />
+      <JsonLd data={buildFaqPageJsonLd(faqItems)} />
       <div className="bg-[radial-gradient(circle_at_top,_rgba(244,114,182,0.18),_transparent_42rem)]">
         <AppHeader
           name={app.name}
@@ -97,6 +105,8 @@ export function WomenBibleTemplate({ app, brandName }: LandingTemplateProps) {
             eyebrow="Devotional searches"
             variant="soft"
           />
+
+          <FaqSection items={faqItems} />
 
           <DownloadCta
             app={app}

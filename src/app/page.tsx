@@ -3,6 +3,7 @@ import {
   Grid3X3Icon,
   ShieldCheckIcon,
 } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import {
@@ -13,13 +14,62 @@ import {
 } from "@/components/ui/card";
 import { loadAppsConfig } from "@/lib/config";
 
+export function generateMetadata(): Metadata {
+  const config = loadAppsConfig();
+
+  return {
+    title: `${config.site.name} - Bible and Lifestyle Apps`,
+    description:
+      config.site.description ??
+      `${config.site.name} builds Bible, devotional, and lifestyle apps for iOS and Android.`,
+    alternates: {
+      canonical: config.site.url,
+    },
+    openGraph: {
+      title: `${config.site.name} - Bible and Lifestyle Apps`,
+      description:
+        config.site.description ??
+        `${config.site.name} builds Bible, devotional, and lifestyle apps for iOS and Android.`,
+      url: config.site.url,
+      siteName: config.site.name,
+      type: "website",
+    },
+  };
+}
+
+function JsonLd({ data }: { data: Record<string, unknown> }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
+    />
+  );
+}
+
 export default function Home() {
   const config = loadAppsConfig();
   const home = config.site.home;
   const values = home?.values ?? [];
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: config.site.name,
+    url: config.site.url,
+  };
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: config.site.name,
+    url: config.site.url,
+    description: config.site.description,
+  };
 
   return (
     <main className="min-h-svh bg-[#fbf7ef] text-[#1d1712]">
+      <JsonLd data={organizationJsonLd} />
+      <JsonLd data={websiteJsonLd} />
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-6 sm:px-6 lg:px-8">
         <Link className="flex items-center gap-3" href="/">
           <span className="grid size-10 place-items-center rounded-2xl bg-[#1d1712] text-sm font-semibold text-white">

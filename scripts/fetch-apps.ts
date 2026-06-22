@@ -213,6 +213,18 @@ function withStoreTracking(
   });
 }
 
+function buildDefaultSeoTitle(name: string, iosApp: StoreApp | undefined, androidApp: StoreApp | undefined): string {
+  if (iosApp && androidApp) {
+    return `${name} - Download on App Store & Google Play`;
+  }
+
+  if (iosApp) {
+    return `${name} - Download on the App Store`;
+  }
+
+  return `${name} - Get it on Google Play`;
+}
+
 function toHttpsUrl(url: string): string {
   if (url.startsWith("//")) {
     return `https:${url}`;
@@ -464,7 +476,7 @@ async function buildPageData(
     seo: {
       title:
         app.seo?.title ??
-        `${name} - Download on App Store${androidApp ? " & Google Play" : ""}`,
+        buildDefaultSeoTitle(name, iosApp, androidApp),
       description: seoDescription,
       canonical,
       ogImage: app.seo?.ogImage ?? media.icon ?? media.screenshots[0],

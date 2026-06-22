@@ -10,22 +10,29 @@ import {
   AboutSection,
   AppPageFooter,
   DownloadCta,
+  FaqSection,
   FeatureGrid,
   JsonLd,
   SectionShell,
   SeoKeywordSection,
+  buildBreadcrumbJsonLd,
+  buildFaqPageJsonLd,
   buildSoftwareApplicationJsonLd,
   defaultBibleFeatures,
   formatDate,
+  getAppFaq,
   type LandingTemplateProps,
 } from "@/components/landing/templates/template-utils";
 
 export function BibleTemplate({ app, brandName }: LandingTemplateProps) {
   const updated = formatDate(app.updatedAt);
+  const faqItems = getAppFaq(app);
 
   return (
     <div className="min-h-svh bg-[#fbf7ef] text-[#1d1712]">
       <JsonLd data={buildSoftwareApplicationJsonLd(app)} />
+      <JsonLd data={buildBreadcrumbJsonLd(app)} />
+      <JsonLd data={buildFaqPageJsonLd(faqItems)} />
       <AppHeader
         name={app.name}
         icon={app.media.icon}
@@ -84,6 +91,8 @@ export function BibleTemplate({ app, brandName }: LandingTemplateProps) {
           title={`Bible study topics for ${app.name}`}
           eyebrow="Scripture searches"
         />
+
+        <FaqSection items={faqItems} />
 
         <SectionShell className="py-8">
           <div className="rounded-2xl border border-[#d9c7ad] bg-white/60 p-5 text-sm text-[#6d5c4a]">

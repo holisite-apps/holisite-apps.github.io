@@ -15,6 +15,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import type { GeneratedAppData } from "@/lib/app-data.schema";
 import { cn } from "@/lib/utils";
@@ -28,6 +34,64 @@ export type Feature = {
   title: string;
   description: string;
 };
+
+export type AppFaqItem = {
+  question: string;
+  answer: string;
+};
+
+function getPlatformText(app: GeneratedAppData): string {
+  if (app.hasIos && app.hasAndroid) {
+    return "iPhone, iPad, and Android devices";
+  }
+
+  return app.hasIos ? "iPhone and iPad" : "Android devices";
+}
+
+export function defaultAppFaq(app: GeneratedAppData): AppFaqItem[] {
+  const storeText = app.hasIos && app.hasAndroid
+    ? "the App Store and Google Play"
+    : app.hasIos
+      ? "the App Store"
+      : "Google Play";
+  const platformText = getPlatformText(app);
+
+  if (app.template === "shopping") {
+    return [
+      {
+        question: `What is ${app.name} used for?`,
+        answer: `${app.name} helps users discover products, save links, organize shopping finds, and manage product lists in a cleaner workflow.`,
+      },
+      {
+        question: `Does ${app.name} support ${platformText}?`,
+        answer: `${app.name} is available for ${platformText}. Use the official store button on this page to open ${storeText}.`,
+      },
+      {
+        question: `Is ${app.name} an official store or shopping agent?`,
+        answer: `${app.name} is a product discovery and organization app. Purchases are completed externally through the relevant shopping or marketplace workflow.`,
+      },
+    ];
+  }
+
+  return [
+    {
+      question: `What is ${app.name}?`,
+      answer: `${app.name} is a Bible app designed for scripture reading, daily devotion, prayer, and focused Bible study.`,
+    },
+    {
+      question: `Can I download ${app.name} on ${platformText}?`,
+      answer: `${app.name} is available for ${platformText}. Use the official store button on this page to open ${storeText}.`,
+    },
+    {
+      question: `Who publishes ${app.name}?`,
+      answer: `${app.name} is published by ${app.developer ?? "Holisite"}. This landing page links to the official app store listing for download.`,
+    },
+  ];
+}
+
+export function getAppFaq(app: GeneratedAppData): AppFaqItem[] {
+  return app.faq.length > 0 ? app.faq : defaultAppFaq(app);
+}
 
 export function formatDate(date?: string): string | undefined {
   if (!date) {
@@ -313,6 +377,34 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
   );
 }
 
+export function FaqSection({
+  items,
+  title = "FAQ",
+  className,
+}: {
+  items: AppFaqItem[];
+  title?: string;
+  className?: string;
+}) {
+  if (items.length === 0) {
+    return null;
+  }
+
+  return (
+    <SectionShell className={cn("py-14", className)}>
+      <h2 className="text-3xl font-semibold tracking-tight">{title}</h2>
+      <Accordion className="mt-6 rounded-2xl border p-4">
+        {items.map((item) => (
+          <AccordionItem key={item.question} value={item.question}>
+            <AccordionTrigger>{item.question}</AccordionTrigger>
+            <AccordionContent>{item.answer}</AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </SectionShell>
+  );
+}
+
 export function buildSoftwareApplicationJsonLd(app: GeneratedAppData) {
   const downloadUrls = [app.stores.ios?.url, app.stores.android?.url].filter(
     (url): url is string => Boolean(url),
@@ -350,6 +442,51 @@ export function buildSoftwareApplicationJsonLd(app: GeneratedAppData) {
       price: "0",
       priceCurrency: "USD",
     },
+  };
+}
+
+export function buildBreadcrumbJsonLd(app: GeneratedAppData) {
+  const canonical = new URL(app.seo.canonical);
+  const appsUrl = new URL("/apps/", canonical.origin);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: canonical.origin,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Apps",
+        item: appsUrl.toString(),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: app.name,
+        item: app.seo.canonical,
+      },
+    ],
+  };
+}
+
+export function buildFaqPageJsonLd(items: AppFaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }
 
