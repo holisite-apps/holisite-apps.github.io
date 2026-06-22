@@ -60,6 +60,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Prepare PR date
+        id: pr-date
+        run: echo "date=$(TZ=Asia/Shanghai date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
@@ -67,7 +71,7 @@ jobs:
           branch: chore/weekly-seo-optimization
           delete-branch: true
           add-paths: apps.config.json
-          title: "chore: weekly SEO optimization"
+          title: "chore: weekly SEO optimization ${{ steps.pr-date.outputs.date }}"
           commit-message: "chore: update weekly SEO terms"
           body: |
             ## Summary
