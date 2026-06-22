@@ -88,9 +88,14 @@
           "daily scripture",
           "faith app",
           "offline Bible",
-          "prayer journal"
+          "prayer journal",
+          "She Reads Truth",
+          "YouVersion Bible app",
+          "First 5 app",
+          "Glorify app",
+          "Daily Grace devotional"
         ],
-        "keywordIntro": "Designed for women seeking scripture, prayer, daily devotionals, and a calm Bible study routine."
+        "keywordIntro": "Designed for women seeking scripture, prayer, daily devotionals, journaling, and a calm Bible study routine while comparing apps like She Reads Truth, YouVersion, First 5, Glorify, and Daily Grace."
       },
       "overrides": {
         "developer": "Holisite"
@@ -135,9 +140,14 @@
           "Christian devotional",
           "holy bible offline",
           "scripture reading",
-          "daily devotional app"
+          "daily devotional app",
+          "Olive Tree Bible",
+          "Blue Letter Bible",
+          "Bible Gateway",
+          "YouVersion Bible app",
+          "Bible in a Year"
         ],
-        "keywordIntro": "A focused NKJV Bible app for scripture reading, offline study, daily verses, and Christian devotionals."
+        "keywordIntro": "A focused NKJV Bible app for scripture reading, offline study, daily verses, and Christian devotionals for readers comparing tools like Olive Tree, Blue Letter Bible, Bible Gateway, YouVersion, and Bible in a Year."
       },
       "overrides": {
         "developer": "Holisite"
@@ -182,9 +192,14 @@
           "scripture study",
           "daily devotional",
           "Christian Bible app",
-          "Bible reading app"
+          "Bible reading app",
+          "NIV Bible app by Olive Tree",
+          "Bible Gateway",
+          "YouVersion Bible app",
+          "Bible reading plans",
+          "audio Bible"
         ],
-        "keywordIntro": "A simple NIV Bible app for offline scripture reading, daily verses, devotionals, and Bible study."
+        "keywordIntro": "A simple NIV Bible app for offline scripture reading, daily verses, devotionals, Bible reading plans, and audio-friendly study workflows alongside popular Bible tools."
       },
       "overrides": {
         "developer": "Holisite"
@@ -225,9 +240,14 @@
           "Christian devotional app",
           "daily scripture",
           "Bible study plan",
-          "prayer app"
+          "prayer app",
+          "She Reads Truth",
+          "First 5 app",
+          "Glorify app",
+          "Bible Study For Women",
+          "faith journaling"
         ],
-        "keywordIntro": "Built for women who want NIV scripture, daily devotionals, prayer, and Bible study plans in one app."
+        "keywordIntro": "Built for women who want NIV scripture, daily devotionals, prayer, faith journaling, and Bible study plans while exploring women-focused apps like She Reads Truth, First 5, Glorify, and Bible Study For Women."
       },
       "overrides": {
         "developer": "Holisite"
@@ -268,9 +288,14 @@
           "offline Bible",
           "daily devotional",
           "prayer app",
-          "scripture study"
+          "scripture study",
+          "She Reads Truth",
+          "YouVersion Bible app",
+          "Daily Grace devotional",
+          "prayer journal",
+          "Bible reading plans"
         ],
-        "keywordIntro": "A women's NKJV Bible app for daily scripture, devotionals, prayer, and spiritual growth."
+        "keywordIntro": "A women's NKJV Bible app for daily scripture, devotionals, prayer, journaling, spiritual growth, and Bible reading plans for users comparing women-focused devotional apps."
       },
       "overrides": {
         "developer": "Holisite"
@@ -322,9 +347,15 @@
           "ACBuy",
           "Taobao product links",
           "DHgate deals",
-          "product discovery lists"
+          "product discovery lists",
+          "Weidian finds",
+          "1688 product links",
+          "QC photos",
+          "Sugargoo",
+          "Superbuy",
+          "AllChinaBuy"
         ],
-        "keywordIntro": "Kakobuy helps organize finds, links, and shopping lists for Kakobuy, Oopbuy, Mulebuy, CNFans, Hoobuy, and similar China shopping workflows."
+        "keywordIntro": "Kakobuy helps organize finds, product links, QC references, and shopping lists for Kakobuy, Oopbuy, Mulebuy, CNFans, Hoobuy, Sugargoo, Superbuy, AllChinaBuy, and similar Taobao, Weidian, 1688, and China shopping workflows."
       },
       "overrides": {
         "developer": "Holisite"
@@ -372,9 +403,15 @@
           "ACBuy links",
           "Taobao finds",
           "DHgate product lists",
-          "China shopping agent"
+          "China shopping agent",
+          "Weidian spreadsheet",
+          "1688 spreadsheet",
+          "QC photos",
+          "Sugargoo spreadsheet",
+          "Superbuy spreadsheet",
+          "CSSBUY spreadsheet"
         ],
-        "keywordIntro": "KakoSheets is designed for organizing Kakobuy, Oopbuy, Mulebuy, CNFans, Hoobuy, and other China shopping finds in a spreadsheet-style workflow."
+        "keywordIntro": "KakoSheets is designed for organizing Kakobuy, Oopbuy, Mulebuy, CNFans, Hoobuy, Sugargoo, Superbuy, CSSBUY, Taobao, Weidian, and 1688 product finds in a spreadsheet-style workflow."
       },
       "overrides": {
         "developer": "Holisite"
@@ -419,9 +456,15 @@
           "Mulebuy",
           "Kakobuy",
           "China shopping agent",
-          "DHgate deals"
+          "DHgate deals",
+          "Weidian finds",
+          "1688 product links",
+          "QC photos",
+          "Sugargoo",
+          "Superbuy",
+          "CSSBUY"
         ],
-        "keywordIntro": "Hipobuy supports spreadsheet-style organization for Oopbuy, CNFans, ACBuy, Hoobuy, Taobao, DHgate, and similar shopping agent finds."
+        "keywordIntro": "Hipobuy supports spreadsheet-style organization for Oopbuy, CNFans, ACBuy, Hoobuy, Kakobuy, Mulebuy, Sugargoo, Superbuy, CSSBUY, Taobao, Weidian, 1688, DHgate, and similar shopping agent finds."
       },
       "overrides": {
         "developer": "Holisite"
@@ -462,9 +505,14 @@
           "daily scripture",
           "Bible study for women",
           "Christian devotional",
-          "faith growth"
+          "faith growth",
+          "She Reads Truth",
+          "YouVersion Bible app",
+          "First 5 app",
+          "Daily Grace devotional",
+          "ESV devotional Bible"
         ],
-        "keywordIntro": "An ESV Bible app for women focused on daily verses, devotional reading, prayer plans, and Bible study notes."
+        "keywordIntro": "An ESV Bible app for women focused on daily verses, devotional reading, prayer plans, Bible study notes, and faith growth for readers comparing ESV devotional resources and women-focused Bible apps."
       },
       "overrides": {
         "developer": "Holisite"
@@ -505,9 +553,14 @@
           "daily scripture",
           "prayer app",
           "faith growth",
-          "offline Bible"
+          "offline Bible",
+          "YouVersion Bible app",
+          "She Reads Truth",
+          "Daily Grace devotional",
+          "Bible journaling app",
+          "Bible reading plans"
         ],
-        "keywordIntro": "A women's NLT Bible app for daily devotionals, scripture reading, Bible study, prayer, and faith growth."
+        "keywordIntro": "A women's NLT Bible app for daily devotionals, scripture reading, Bible study, prayer, journaling, reading plans, and faith growth."
       },
       "overrides": {
         "developer": "Holisite"
