@@ -1,18 +1,18 @@
 {
   "site": {
-    "name": "Faith Apps Studio",
+    "name": "Holisite",
     "url": "https://username.github.io",
     "locale": "en",
-    "description": "Bible and lifestyle apps for daily inspiration.",
+    "description": "Bible and lifestyle apps by Holisite.",
     "githubPages": {
       "repository": "username/username.github.io",
       "basePath": "",
       "customDomain": ""
     },
     "home": {
-      "headline": "Faith Apps Studio",
+      "headline": "Holisite",
       "subheadline": "Thoughtful apps for daily life",
-      "intro": "We build Bible and lifestyle apps with care for reading, reflection, and everyday tools.",
+      "intro": "Holisite builds Bible and lifestyle apps with care for reading, reflection, and everyday tools.",
       "values": [
         {
           "title": "Scripture focused",
@@ -60,6 +60,9 @@
           "country": "us",
           "lang": "en"
         }
+      },
+      "overrides": {
+        "developer": "Holisite"
       }
     },
     {
@@ -78,6 +81,9 @@
           "country": "us",
           "lang": "en"
         }
+      },
+      "overrides": {
+        "developer": "Holisite"
       }
     },
     {
@@ -96,6 +102,9 @@
           "country": "us",
           "lang": "en"
         }
+      },
+      "overrides": {
+        "developer": "Holisite"
       }
     },
     {
@@ -110,6 +119,9 @@
           "country": "us",
           "lang": "en"
         }
+      },
+      "overrides": {
+        "developer": "Holisite"
       }
     },
     {
@@ -124,6 +136,98 @@
           "country": "us",
           "lang": "en"
         }
+      },
+      "overrides": {
+        "developer": "Holisite"
+      }
+    },
+    {
+      "slug": "kakobuy",
+      "name": "Kakobuy",
+      "template": "shopping",
+      "enabled": true,
+      "priority": 6,
+      "stores": {
+        "ios": {
+          "appId": "kakobuy.discovery.finds.lists.deals",
+          "country": "us"
+        },
+        "android": {
+          "appId": "com.kako.sheet.china.buy.spreadsheets",
+          "country": "us",
+          "lang": "en"
+        }
+      },
+      "overrides": {
+        "developer": "Holisite"
+      }
+    },
+    {
+      "slug": "kakosheets",
+      "name": "KakoSheets",
+      "template": "shopping",
+      "enabled": true,
+      "priority": 7,
+      "stores": {
+        "android": {
+          "appId": "com.kako.sheet.china.buy.spreadsheets",
+          "country": "us",
+          "lang": "en"
+        }
+      },
+      "overrides": {
+        "developer": "Holisite"
+      }
+    },
+    {
+      "slug": "hipobuy",
+      "name": "Hipobuy",
+      "template": "shopping",
+      "enabled": true,
+      "priority": 8,
+      "stores": {
+        "android": {
+          "appId": "oopbuy.cnfans.acbuy.pandabuy.hoobuy.china.spread.taobao.dhgate",
+          "country": "us",
+          "lang": "en"
+        }
+      },
+      "overrides": {
+        "developer": "Holisite"
+      }
+    },
+    {
+      "slug": "esv-womens-edition-bible",
+      "name": "ESV Women's Edition Bible",
+      "template": "women-bible",
+      "enabled": true,
+      "priority": 9,
+      "stores": {
+        "android": {
+          "appId": "bibleversewomen.esv.faithtech.daily.bible.verse.study.notes",
+          "country": "us",
+          "lang": "en"
+        }
+      },
+      "overrides": {
+        "developer": "Holisite"
+      }
+    },
+    {
+      "slug": "womens-bible-nlt-edition",
+      "name": "Women's Bible NLT Edition",
+      "template": "women-bible",
+      "enabled": true,
+      "priority": 10,
+      "stores": {
+        "android": {
+          "appId": "womensbible.nltedition.christian.bible.study.devotionals.women",
+          "country": "us",
+          "lang": "en"
+        }
+      },
+      "overrides": {
+        "developer": "Holisite"
       }
     }
   ]
