@@ -9,11 +9,6 @@
       "basePath": "",
       "customDomain": ""
     },
-    "tracking": {
-      "enabled": true,
-      "utmSource": "holisite",
-      "utmMedium": "landing_page"
-    },
     "home": {
       "headline": "Holisite",
       "subheadline": "Thoughtful apps for daily life",
@@ -32,6 +27,11 @@
           "description": "We respect your data and privacy."
         }
       ]
+    },
+    "tracking": {
+      "enabled": true,
+      "utmSource": "holisite",
+      "utmMedium": "landing_page"
     }
   },
   "templates": {
@@ -51,9 +51,9 @@
   "apps": [
     {
       "slug": "womens-bible",
-      "name": "Women's Bible",
       "template": "women-bible",
       "enabled": true,
+      "name": "Women's Bible",
       "priority": 1,
       "stores": {
         "ios": {
@@ -74,14 +74,23 @@
           "Bible app for women",
           "daily devotionals",
           "daily prayer",
-          "Bible study for women"
+          "Bible study for women",
+          "daily devotionals for women",
+          "daily prayer app",
+          "women's Bible study",
+          "daily scripture for women",
+          "Christian devotional app"
         ],
         "targetKeywords": [
           "Women's Bible app",
           "women devotional app",
           "daily Bible verse for women",
           "Bible prayer app",
-          "Christian devotional for women"
+          "Christian devotional for women",
+          "Bible app for women",
+          "daily devotional app for women",
+          "Bible study app for women",
+          "Christian prayer app for women"
         ],
         "relatedTerms": [
           "Bible study app",
@@ -93,9 +102,15 @@
           "YouVersion Bible app",
           "First 5 app",
           "Glorify app",
-          "Daily Grace devotional"
+          "Daily Grace devotional",
+          "women's devotional app",
+          "quiet time app",
+          "prayer journal app",
+          "offline Bible app",
+          "KJV Bible for women",
+          "daily scripture app"
         ],
-        "keywordIntro": "Designed for women seeking scripture, prayer, daily devotionals, journaling, and a calm Bible study routine while comparing apps like She Reads Truth, YouVersion, First 5, Glorify, and Daily Grace."
+        "keywordIntro": "Women's Bible is designed for women seeking daily scripture, devotionals, prayer support, journaling, and a calm Bible study routine, with helpful context for those exploring apps such as She Reads Truth, YouVersion, First 5, and Glorify."
       },
       "overrides": {
         "developer": "Holisite"
@@ -103,9 +118,9 @@
     },
     {
       "slug": "nkjv-bible",
-      "name": "NKJV Bible",
       "template": "bible",
       "enabled": true,
+      "name": "NKJV Bible",
       "priority": 2,
       "stores": {
         "ios": {
@@ -126,14 +141,20 @@
           "New King James Version",
           "offline Bible",
           "Bible study",
-          "daily Bible verse"
+          "daily Bible verse",
+          "NKJV Bible offline",
+          "Bible study app",
+          "Christian devotionals"
         ],
         "targetKeywords": [
           "NKJV Bible app",
           "New King James Bible app",
           "offline NKJV Bible",
           "NKJV daily verse",
-          "NKJV devotionals"
+          "NKJV devotionals",
+          "offline NKJV Bible app",
+          "NKJV daily verse app",
+          "NKJV Bible study app"
         ],
         "relatedTerms": [
           "Bible study app",
@@ -145,9 +166,12 @@
           "Blue Letter Bible",
           "Bible Gateway",
           "YouVersion Bible app",
-          "Bible in a Year"
+          "Bible in a Year",
+          "New King James Version Bible",
+          "offline Bible reader",
+          "scripture reading app"
         ],
-        "keywordIntro": "A focused NKJV Bible app for scripture reading, offline study, daily verses, and Christian devotionals for readers comparing tools like Olive Tree, Blue Letter Bible, Bible Gateway, YouVersion, and Bible in a Year."
+        "keywordIntro": "NKJV Bible helps readers study the New King James Version with offline scripture access, daily verses, and devotional reading tools, useful for those comparing Bible study apps and scripture reading resources."
       },
       "overrides": {
         "developer": "Holisite"
@@ -155,9 +179,9 @@
     },
     {
       "slug": "niv-bible",
-      "name": "NIV Bible",
       "template": "bible",
       "enabled": true,
+      "name": "NIV Bible",
       "priority": 3,
       "stores": {
         "ios": {
@@ -178,14 +202,23 @@
           "New International Version",
           "offline Bible",
           "daily verse",
-          "Bible study app"
+          "Bible study app",
+          "New International Version Bible",
+          "offline NIV Bible",
+          "daily Bible verse",
+          "NIV devotional",
+          "Bible reading plan"
         ],
         "targetKeywords": [
           "NIV Bible app",
           "offline NIV Bible",
           "NIV daily verse",
           "NIV devotionals",
-          "New International Version Bible app"
+          "New International Version Bible app",
+          "offline NIV Bible app",
+          "NIV daily verse app",
+          "NIV devotional reading",
+          "NIV Bible study tools"
         ],
         "relatedTerms": [
           "holy bible offline",
@@ -197,9 +230,12 @@
           "Bible Gateway",
           "YouVersion Bible app",
           "Bible reading plans",
-          "audio Bible"
+          "audio Bible",
+          "scripture study app",
+          "daily devotional app",
+          "Olive Tree Bible app"
         ],
-        "keywordIntro": "A simple NIV Bible app for offline scripture reading, daily verses, devotionals, Bible reading plans, and audio-friendly study workflows alongside popular Bible tools."
+        "keywordIntro": "NIV Bible is designed for readers who want simple access to the New International Version, offline scripture reading, daily verses, devotionals, and study-friendly Bible reading tools."
       },
       "overrides": {
         "developer": "Holisite"
@@ -207,9 +243,9 @@
     },
     {
       "slug": "womens-niv-bible",
-      "name": "Women's NIV Bible",
       "template": "women-bible",
       "enabled": true,
+      "name": "Women's NIV Bible",
       "priority": 4,
       "stores": {
         "android": {
@@ -226,14 +262,21 @@
           "NIV Bible for women",
           "women devotional",
           "daily Bible verse",
-          "Bible reading plan"
+          "Bible reading plan",
+          "women's devotional Bible",
+          "daily devotional for women",
+          "prayer and scripture app"
         ],
         "targetKeywords": [
           "Women's NIV Bible app",
           "NIV devotional for women",
           "daily devotional for women",
           "women Bible study app",
-          "offline NIV Bible for women"
+          "offline NIV Bible for women",
+          "NIV devotional app for women",
+          "daily Bible devotion for women",
+          "offline NIV Bible app for women",
+          "Christian prayer app for women"
         ],
         "relatedTerms": [
           "faith app for women",
@@ -245,9 +288,14 @@
           "First 5 app",
           "Glorify app",
           "Bible Study For Women",
-          "faith journaling"
+          "faith journaling",
+          "daily scripture app",
+          "women's Bible study plans",
+          "faith journaling app",
+          "morning prayer app",
+          "YouVersion Bible app"
         ],
-        "keywordIntro": "Built for women who want NIV scripture, daily devotionals, prayer, faith journaling, and Bible study plans while exploring women-focused apps like She Reads Truth, First 5, Glorify, and Bible Study For Women."
+        "keywordIntro": "Women's NIV Bible is designed for women seeking NIV scripture, daily devotionals, prayer support, Bible reading plans, and study tools, with related searches often including faith apps like She Reads Truth, First 5, Glorify, and YouVersion."
       },
       "overrides": {
         "developer": "Holisite"
@@ -255,9 +303,9 @@
     },
     {
       "slug": "womens-nkjv-bible-devotionals",
-      "name": "Women's NKJV Bible & Devotionals",
       "template": "women-bible",
       "enabled": true,
+      "name": "Women's NKJV Bible & Devotionals",
       "priority": 5,
       "stores": {
         "android": {
@@ -274,14 +322,20 @@
           "NKJV Bible for women",
           "women devotionals",
           "daily scripture",
-          "faith growth"
+          "faith growth",
+          "daily Bible verse for women",
+          "women Bible study",
+          "prayer journal for women"
         ],
         "targetKeywords": [
           "Women's NKJV Bible app",
           "NKJV devotional for women",
           "daily Bible verse for women",
           "women Bible study",
-          "Christian faith app for women"
+          "Christian faith app for women",
+          "women's daily devotional app",
+          "Christian Bible study app for women",
+          "NKJV prayer and devotionals"
         ],
         "relatedTerms": [
           "New King James Version",
@@ -293,9 +347,14 @@
           "YouVersion Bible app",
           "Daily Grace devotional",
           "prayer journal",
-          "Bible reading plans"
+          "Bible reading plans",
+          "New King James Version Bible",
+          "offline Bible for women",
+          "daily devotional for women",
+          "women's prayer app",
+          "scripture study for women"
         ],
-        "keywordIntro": "A women's NKJV Bible app for daily scripture, devotionals, prayer, journaling, spiritual growth, and Bible reading plans for users comparing women-focused devotional apps."
+        "keywordIntro": "Women's NKJV Bible & Devotionals supports daily scripture reading, women-focused devotionals, prayer journaling, and Bible study for users seeking a faith-centered NKJV devotional experience."
       },
       "overrides": {
         "developer": "Holisite"
@@ -303,9 +362,9 @@
     },
     {
       "slug": "kakobuy",
-      "name": "Kakobuy",
       "template": "shopping",
       "enabled": true,
+      "name": "Kakobuy",
       "priority": 6,
       "stores": {
         "ios": {
@@ -332,14 +391,24 @@
           "Taobao finds",
           "DHgate finds",
           "CNFans",
-          "spreadsheet shopping app"
+          "spreadsheet shopping app",
+          "Kakobuy spreadsheet",
+          "Kakobuy finds",
+          "Kakobuy product links",
+          "China shopping finds",
+          "shopping spreadsheet",
+          "Weidian finds",
+          "1688 product links"
         ],
         "targetKeywords": [
           "Oopbuy finds",
           "Mulebuy finds",
           "Kakobuy spreadsheet",
           "China shopping finds",
-          "shopping agent spreadsheet"
+          "shopping agent spreadsheet",
+          "Kakobuy finds",
+          "Kakobuy product links",
+          "Taobao Weidian finds"
         ],
         "relatedTerms": [
           "CNFans",
@@ -353,9 +422,14 @@
           "QC photos",
           "Sugargoo",
           "Superbuy",
-          "AllChinaBuy"
+          "AllChinaBuy",
+          "Oopbuy finds",
+          "Mulebuy finds",
+          "Weidian product links",
+          "1688 shopping links",
+          "DHgate finds"
         ],
-        "keywordIntro": "Kakobuy helps organize finds, product links, QC references, and shopping lists for Kakobuy, Oopbuy, Mulebuy, CNFans, Hoobuy, Sugargoo, Superbuy, AllChinaBuy, and similar Taobao, Weidian, 1688, and China shopping workflows."
+        "keywordIntro": "Kakobuy helps organize product finds, shopping links, QC references, deal lists, and spreadsheet-style workflows for Taobao, Weidian, 1688, DHgate, and related China shopping research."
       },
       "overrides": {
         "developer": "Holisite"
@@ -363,9 +437,9 @@
     },
     {
       "slug": "kakosheets",
-      "name": "KakoSheets",
       "template": "shopping",
       "enabled": true,
+      "name": "KakoSheets",
       "priority": 7,
       "stores": {
         "android": {
@@ -388,14 +462,24 @@
           "deal tracker",
           "Taobao spreadsheet",
           "DHgate spreadsheet",
-          "shopping agent finds"
+          "shopping agent finds",
+          "product finds organizer",
+          "shopping finds tracker",
+          "product link manager",
+          "deal tracker spreadsheet",
+          "Taobao product spreadsheet",
+          "Weidian finds sheet",
+          "1688 product links"
         ],
         "targetKeywords": [
           "Kakobuy finds",
           "Oopbuy finds",
           "Mulebuy finds",
           "KakoSheets spreadsheet",
-          "shopping sheet app"
+          "shopping sheet app",
+          "product finds spreadsheet",
+          "Kakobuy finds organizer",
+          "China shopping finds tracker"
         ],
         "relatedTerms": [
           "CNFans spreadsheet",
@@ -409,9 +493,13 @@
           "QC photos",
           "Sugargoo spreadsheet",
           "Superbuy spreadsheet",
-          "CSSBUY spreadsheet"
+          "CSSBUY spreadsheet",
+          "Kakobuy finds",
+          "Oopbuy finds",
+          "Mulebuy finds",
+          "shopping agent finds"
         ],
-        "keywordIntro": "KakoSheets is designed for organizing Kakobuy, Oopbuy, Mulebuy, CNFans, Hoobuy, Sugargoo, Superbuy, CSSBUY, Taobao, Weidian, and 1688 product finds in a spreadsheet-style workflow."
+        "keywordIntro": "KakoSheets helps shoppers save product links, organize finds, track collections, and export spreadsheet-style lists for Taobao, Weidian, 1688, DHgate, and shopping agent workflows."
       },
       "overrides": {
         "developer": "Holisite"
@@ -419,9 +507,9 @@
     },
     {
       "slug": "hipobuy",
-      "name": "Hipobuy",
       "template": "shopping",
       "enabled": true,
+      "name": "Hipobuy",
       "priority": 8,
       "stores": {
         "android": {
@@ -442,14 +530,26 @@
           "Pandabuy",
           "Taobao finds",
           "DHgate finds",
-          "shopping spreadsheet"
+          "shopping spreadsheet",
+          "shopping finds organizer",
+          "product link organizer",
+          "Weidian finds",
+          "1688 product links",
+          "agent shopping list",
+          "QC photo tracker"
         ],
         "targetKeywords": [
           "Oopbuy spreadsheet",
           "CNFans finds",
           "ACBuy shopping list",
           "Hoobuy spreadsheet",
-          "Taobao product links"
+          "Taobao product links",
+          "Hipobuy shopping spreadsheet",
+          "Taobao product link organizer",
+          "Weidian finds organizer",
+          "1688 shopping list tracker",
+          "DHgate product finds",
+          "agent shopping spreadsheet"
         ],
         "relatedTerms": [
           "Pandabuy alternatives",
@@ -462,9 +562,16 @@
           "QC photos",
           "Sugargoo",
           "Superbuy",
-          "CSSBUY"
+          "CSSBUY",
+          "Oopbuy spreadsheet",
+          "CNFans finds",
+          "ACBuy spreadsheet",
+          "Hoobuy spreadsheet",
+          "Mulebuy finds",
+          "Kakobuy spreadsheet",
+          "Sugargoo finds"
         ],
-        "keywordIntro": "Hipobuy supports spreadsheet-style organization for Oopbuy, CNFans, ACBuy, Hoobuy, Kakobuy, Mulebuy, Sugargoo, Superbuy, CSSBUY, Taobao, Weidian, 1688, DHgate, and similar shopping agent finds."
+        "keywordIntro": "Hipobuy helps shoppers organize Taobao, Weidian, 1688, DHgate, and shopping agent finds with product links, lists, QC notes, and spreadsheet-style workflows."
       },
       "overrides": {
         "developer": "Holisite"
@@ -472,9 +579,9 @@
     },
     {
       "slug": "esv-womens-edition-bible",
-      "name": "ESV Women's Edition Bible",
       "template": "women-bible",
       "enabled": true,
+      "name": "ESV Women's Edition Bible",
       "priority": 9,
       "stores": {
         "android": {
@@ -491,14 +598,22 @@
           "ESV Bible for women",
           "daily Bible verse",
           "women devotionals",
-          "Bible notes"
+          "Bible notes",
+          "women's devotional Bible app",
+          "daily Bible verse for women",
+          "Bible study notes for women",
+          "prayer plans for women"
         ],
         "targetKeywords": [
           "ESV Women's Bible app",
           "ESV devotional for women",
           "daily verse for women",
           "women Bible study notes",
-          "English Standard Version Bible app"
+          "English Standard Version Bible app",
+          "daily devotional Bible app for women",
+          "women Bible study app",
+          "English Standard Version devotional app",
+          "daily scripture and prayer app"
         ],
         "relatedTerms": [
           "prayer plans",
@@ -510,9 +625,14 @@
           "YouVersion Bible app",
           "First 5 app",
           "Daily Grace devotional",
-          "ESV devotional Bible"
+          "ESV devotional Bible",
+          "ESV Women's Study Bible",
+          "ESV Women's Devotional Bible",
+          "Christian devotional app",
+          "daily scripture reading",
+          "faith growth app"
         ],
-        "keywordIntro": "An ESV Bible app for women focused on daily verses, devotional reading, prayer plans, Bible study notes, and faith growth for readers comparing ESV devotional resources and women-focused Bible apps."
+        "keywordIntro": "ESV Women's Edition Bible is designed for readers looking for an ESV-focused Bible app with daily scripture, devotionals for women, prayer plans, study notes, and faith-building reading support."
       },
       "overrides": {
         "developer": "Holisite"
@@ -520,9 +640,9 @@
     },
     {
       "slug": "womens-bible-nlt-edition",
-      "name": "Women's Bible NLT Edition",
       "template": "women-bible",
       "enabled": true,
+      "name": "Women's Bible NLT Edition",
       "priority": 10,
       "stores": {
         "android": {
@@ -539,14 +659,22 @@
           "NLT Bible for women",
           "New Living Translation",
           "women devotionals",
-          "daily Bible verse"
+          "daily Bible verse",
+          "New Living Translation Bible app",
+          "women's devotional Bible",
+          "daily Bible verse for women",
+          "women Bible study",
+          "Christian devotionals for women",
+          "prayer and scripture app"
         ],
         "targetKeywords": [
           "Women's NLT Bible app",
           "NLT devotional for women",
           "New Living Translation app",
           "daily devotional for women",
-          "women Bible study app"
+          "women Bible study app",
+          "Bible reading plan for women",
+          "offline Bible app for women"
         ],
         "relatedTerms": [
           "Christian Bible study",
@@ -558,9 +686,11 @@
           "She Reads Truth",
           "Daily Grace devotional",
           "Bible journaling app",
-          "Bible reading plans"
+          "Bible reading plans",
+          "prayer journal app",
+          "THRIVE Devotional Bible"
         ],
-        "keywordIntro": "A women's NLT Bible app for daily devotionals, scripture reading, Bible study, prayer, journaling, reading plans, and faith growth."
+        "keywordIntro": "Women's Bible NLT Edition helps women read New Living Translation scripture, follow daily devotionals, study the Bible, pray, journal, and grow in faith."
       },
       "overrides": {
         "developer": "Holisite"

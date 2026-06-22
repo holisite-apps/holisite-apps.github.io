@@ -1,0 +1,63 @@
+name: Weekly SEO Optimization PR
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly SEO review: Monday 09:00 Beijing time (UTC+8).
+    - cron: "0 1 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: weekly-seo-pr
+  cancel-in-progress: false
+
+jobs:
+  optimize:
+    name: Generate SEO optimization PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate SEO suggestions
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.5' }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+        run: npm run seo:weekly
+
+      - name: Validate app configuration
+        run: npm run validate:config
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/weekly-seo-optimization
+          delete-branch: true
+          title: "chore: weekly SEO optimization"
+          commit-message: "chore: update weekly SEO terms"
+          body: |
+            ## Summary
+            - Refreshes SEO terms and keyword intro copy in `apps.config.json`.
+            - Uses search context when `SERPAPI_API_KEY` is configured.
+            - Uses LLM suggestions from `OPENAI_API_KEY`.
+
+            ## Review checklist
+            - Check that competitor names are used only as related/search context.
+            - Confirm no app claims to be an official competitor property.
+            - Run `npm run fetch && npm run build` after merge to regenerate pages.

@@ -54,6 +54,17 @@ npm run build
 2. 在 GitHub 仓库 Settings → Pages 中选择 **GitHub Actions**。
 3. 确认 `.env.local` 已随代码提交，以便线上构建启用 Firebase 统计。
 
+## 每周 SEO 优化 PR
+
+已提供 `.github/workflows/weekly-seo-pr.yml`。该 workflow 每周一北京时间 09:00 运行，调用 `npm run seo:weekly` 更新 `apps.config.json` 的 SEO 词和 `keywordIntro`，然后创建 PR，不直接推送 `main`。
+
+需要在 GitHub 仓库 Settings → Secrets and variables → Actions 中配置：
+
+- Secret: `OPENAI_API_KEY`（必需，用于生成 SEO 建议）
+- Secret: `SERPAPI_API_KEY`（可选，用于 Google SERP 搜索上下文）
+- Variable: `OPENAI_BASE_URL`（可选，OpenAI 兼容中转地址，默认 `https://api.openai.com/v1`）
+- Variable: `OPENAI_MODEL`（可选，默认 `gpt-5.5`）
+
 ## 项目结构（当前）
 
 ```

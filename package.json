@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "fetch": "tsx scripts/fetch-apps.ts",
-    "validate:config": "tsx scripts/validate-config.ts"
+    "validate:config": "tsx scripts/validate-config.ts",
+    "seo:weekly": "tsx scripts/weekly-seo-optimize.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
