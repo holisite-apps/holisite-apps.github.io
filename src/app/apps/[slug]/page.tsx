@@ -8,6 +8,7 @@ import {
   loadGeneratedAppData,
 } from "@/lib/app-data";
 import { loadAppsConfig } from "@/lib/config";
+import type { GeneratedAppData } from "@/lib/app-data.schema";
 
 type AppPageProps = {
   params: Promise<{
@@ -27,6 +28,36 @@ function absoluteUrl(siteUrl: string, path?: string): string | undefined {
   }
 
   return `${siteUrl}${path}`;
+}
+
+const recommendedBibleSlugs = [
+  "womens-bible",
+  "womens-niv-bible",
+  "womens-nkjv-bible-devotionals",
+];
+
+const recommendedShoppingSlugs = ["kakosheets", "kakobuy", "hipobuy"];
+
+function getRelatedApps(
+  app: GeneratedAppData,
+  allApps: GeneratedAppData[],
+): GeneratedAppData[] {
+  const prioritySlugs =
+    app.template === "shopping" ? recommendedShoppingSlugs : recommendedBibleSlugs;
+
+  const priorityApps = prioritySlugs
+    .filter((slug) => slug !== app.slug)
+    .map((slug) => allApps.find((relatedApp) => relatedApp.slug === slug))
+    .filter((relatedApp): relatedApp is GeneratedAppData => Boolean(relatedApp));
+
+  const fallbackApps = allApps.filter(
+    (relatedApp) =>
+      relatedApp.slug !== app.slug &&
+      !prioritySlugs.includes(relatedApp.slug) &&
+      relatedApp.template === app.template,
+  );
+
+  return [...priorityApps, ...fallbackApps].slice(0, 3);
 }
 
 export function generateStaticParams() {
@@ -90,16 +121,7 @@ export default async function AppPage({ params }: AppPageProps) {
   const config = loadAppsConfig();
   const app = loadGeneratedAppData(slug);
   const allApps = loadAllGeneratedApps();
-  const relatedApps = [
-    ...allApps.filter(
-      (relatedApp) =>
-        relatedApp.slug !== app.slug && relatedApp.template === app.template,
-    ),
-    ...allApps.filter(
-      (relatedApp) =>
-        relatedApp.slug !== app.slug && relatedApp.template !== app.template,
-    ),
-  ].slice(0, 3);
+  const relatedApps = getRelatedApps(app, allApps);
 
   return (
     <AppTemplate

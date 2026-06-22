@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Holisite favicon">
+  <rect width="64" height="64" rx="18" fill="#fbf7ef"/>
+  <rect x="8" y="8" width="48" height="48" rx="15" fill="#1d1712"/>
+  <circle cx="46" cy="18" r="4" fill="#c9a227"/>
+  <path d="M21 19h7v10h8V19h7v26h-7V35h-8v10h-7V19Z" fill="#ffffff"/>
+  <path d="M19 50h26" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
+</svg>
