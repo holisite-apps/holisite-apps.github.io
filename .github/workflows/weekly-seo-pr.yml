@@ -35,10 +35,18 @@ jobs:
       - name: Generate SEO suggestions
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
+          OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://cpa.haitanyule.com/v1' }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.5' }}
           SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
-        run: npm run seo:weekly
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "::error::OPENAI_API_KEY secret is not configured"
+            exit 1
+          fi
+
+          echo "OPENAI_BASE_URL=$OPENAI_BASE_URL"
+          echo "OPENAI_MODEL=$OPENAI_MODEL"
+          npm run seo:weekly
 
       - name: Validate app configuration
         run: npm run validate:config
