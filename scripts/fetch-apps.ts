@@ -9,6 +9,7 @@ import {
   loadAppsConfig,
 } from "../src/lib/config";
 import type { AppConfig, AppsConfig } from "../src/lib/config.schema";
+import { normalizeMetaDescription } from "../src/lib/seo";
 
 const require = createRequire(import.meta.url);
 const appStore = require("app-store-scraper");
@@ -443,8 +444,9 @@ async function buildPageData(
   const media = await buildMedia(app, primaryData, androidApp);
   const rating = resolveRating(app, primaryData);
   const canonical = getAppCanonicalUrl(config, app.slug);
-  const seoDescription =
-    app.seo?.description ?? tagline ?? firstSentence(description);
+  const seoDescription = normalizeMetaDescription(
+    app.seo?.description ?? tagline ?? firstSentence(description),
+  );
   const targetKeywords = app.seo?.targetKeywords ?? [];
   const relatedTerms = app.seo?.relatedTerms ?? [];
   const keywords = mergeKeywords(

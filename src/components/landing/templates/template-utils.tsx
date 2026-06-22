@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import type { GeneratedAppData } from "@/lib/app-data.schema";
+import { normalizeMetaDescription } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export type LandingTemplateProps = {
@@ -598,7 +599,7 @@ export function buildSoftwareApplicationJsonLd(app: GeneratedAppData) {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: app.name,
-    description: app.seo.description || app.tagline,
+    description: normalizeMetaDescription(app.seo.description || app.tagline),
     applicationCategory: app.category,
     operatingSystem: [
       app.hasIos ? "iOS" : undefined,

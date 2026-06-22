@@ -70,7 +70,7 @@ export const generatedAppDataSchema = z.object({
   }),
   seo: z.object({
     title: z.string().min(1),
-    description: z.string(),
+    description: z.string().min(25).max(160),
     canonical: z.string().url(),
     ogImage: z.string().optional(),
     keywords: z.array(z.string()).optional(),

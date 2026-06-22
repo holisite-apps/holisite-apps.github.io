@@ -8,6 +8,7 @@ import {
   loadGeneratedAppData,
 } from "@/lib/app-data";
 import { loadAppsConfig } from "@/lib/config";
+import { normalizeMetaDescription } from "@/lib/seo";
 import type { GeneratedAppData } from "@/lib/app-data.schema";
 
 type AppPageProps = {
@@ -77,17 +78,18 @@ export async function generateMetadata({
   const config = loadAppsConfig();
   const app = loadGeneratedAppData(slug);
   const image = absoluteUrl(config.site.url, app.seo.ogImage);
+  const description = normalizeMetaDescription(app.seo.description);
 
   return {
     title: app.seo.title,
-    description: app.seo.description,
+    description,
     alternates: {
       canonical: app.seo.canonical,
     },
     robots: app.seo.noindex ? { index: false, follow: false } : undefined,
     openGraph: {
       title: app.seo.title,
-      description: app.seo.description,
+      description,
       url: app.seo.canonical,
       siteName: config.site.name,
       type: "website",
@@ -103,7 +105,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: app.seo.title,
-      description: app.seo.description,
+      description,
       images: image ? [image] : undefined,
     },
     keywords: app.seo.keywords,

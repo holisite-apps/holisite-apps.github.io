@@ -111,7 +111,7 @@ export const storesSchema = z
 
 export const seoSchema = z.object({
   title: z.string().min(1).optional(),
-  description: z.string().min(1).optional(),
+  description: z.string().min(25).max(160).optional(),
   keywords: z.array(z.string().min(1)).optional(),
   targetKeywords: z.array(z.string().min(1)).optional(),
   relatedTerms: z.array(z.string().min(1)).optional(),
