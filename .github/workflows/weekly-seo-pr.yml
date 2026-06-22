@@ -63,7 +63,7 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CREATE_PR_TOKEN || secrets.GITHUB_TOKEN }}
           branch: chore/weekly-seo-optimization
           delete-branch: true
           add-paths: apps.config.json
