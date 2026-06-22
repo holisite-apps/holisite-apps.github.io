@@ -21,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    {
+      url: `${config.site.url}/apps/`,
+      lastModified: manifest.fetchedAt,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     ...apps
       .filter((app) => !app.seo.noindex)
       .map((app) => ({

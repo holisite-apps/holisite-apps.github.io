@@ -1,4 +1,8 @@
-import { ShieldCheckIcon, SparklesIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  Grid3X3Icon,
+  ShieldCheckIcon,
+} from "lucide-react";
 import Link from "next/link";
 
 import {
@@ -25,6 +29,12 @@ export default function Home() {
             {config.site.name}
           </span>
         </Link>
+        <Link
+          className="rounded-full border border-[#d8c5a8] bg-white/70 px-4 py-2 text-sm font-semibold text-[#4b3a2b] shadow-sm transition hover:-translate-y-0.5 hover:bg-white"
+          href="/apps/"
+        >
+          Apps
+        </Link>
       </header>
 
       <section className="mx-auto grid w-full max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_0.8fr] lg:px-8 lg:py-28">
@@ -43,6 +53,15 @@ export default function Home() {
               {home.intro}
             </p>
           ) : null}
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              className="inline-flex items-center gap-2 rounded-full bg-[#1d1712] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#3a2b20]"
+              href="/apps/"
+            >
+              View all apps
+              <ArrowRightIcon className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
         </div>
 
         <div className="relative">
@@ -50,17 +69,24 @@ export default function Home() {
           <Card className="relative rounded-[2rem] border-[#e7d7bd] bg-white/80 shadow-xl">
             <CardHeader className="gap-5 p-8">
               <span className="grid size-12 place-items-center rounded-2xl bg-[#1d1712] text-white">
-                <SparklesIcon className="size-5" aria-hidden="true" />
+                <Grid3X3Icon className="size-5" aria-hidden="true" />
               </span>
               <div>
                 <CardTitle className="text-2xl">
-                  Thoughtfully built for daily routines
+                  Browse the Holisite app catalog
                 </CardTitle>
                 <CardDescription className="mt-3 text-base leading-7">
-                  We focus on calm, useful mobile experiences for scripture,
-                  reflection, and everyday tools.
+                  Explore every landing page in one place, from scripture and
+                  reflection apps to everyday shopping tools.
                 </CardDescription>
               </div>
+              <Link
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#8a6418]"
+                href="/apps/"
+              >
+                Open app list
+                <ArrowRightIcon className="size-4" aria-hidden="true" />
+              </Link>
             </CardHeader>
           </Card>
         </div>
