@@ -126,7 +126,10 @@
           "daily devotionals",
           "Christian meditation app"
         ],
-        "keywordIntro": "Women's Bible pairs daily scripture with a high-quality audio Bible, guided prayers for different seasons of life, verse highlighting, notes, and faith-based reading plans wrapped in a gentle, feminine design. It can help people exploring women's devotional apps, audio Bible apps, prayer journals, and tools like She Reads Truth, YouVersion, First 5, or Glorify."
+        "keywordIntro": "Women's Bible brings daily scripture, devotionals, guided prayer, audio Bible listening, verse notes, and reading plans into a calm Bible study experience designed for women. It may be useful for people searching for women's devotional apps, prayer journals, quiet time tools, audio Bible apps, or related faith resources such as She Reads Truth, YouVersion, First 5, and Glorify."
+      },
+      "overrides": {
+        "developer": "Holisite"
       },
       "faq": [
         {
@@ -141,10 +144,7 @@
           "question": "Is Women's Bible available on iPhone and Android?",
           "answer": "Yes. Women's Bible is available on both the App Store and Google Play, and a premium upgrade removes ads and unlocks unlimited Bible Q&A and verse explanations."
         }
-      ],
-      "overrides": {
-        "developer": "Holisite"
-      }
+      ]
     },
     {
       "slug": "nkjv-bible",
@@ -183,7 +183,8 @@
           "NKJV daily verse",
           "NKJV devotionals",
           "offline Bible reader",
-          "Christian devotional app"
+          "Christian devotional app",
+          "NKJV Bible study"
         ],
         "targetKeywords": [
           "NKJV Bible app",
@@ -214,9 +215,10 @@
           "New King James Version Bible",
           "offline Bible reader",
           "scripture reading app",
-          "Bible verse app"
+          "Bible verse app",
+          "holy Bible offline"
         ],
-        "keywordIntro": "NKJV Bible helps readers access New King James Version scripture, offline Bible reading, daily verses, and devotional study features in a simple mobile-friendly experience."
+        "keywordIntro": "NKJV Bible is designed for readers who want New King James Version scripture, offline Bible access, daily verses, devotionals, and simple study tools in a mobile-friendly Bible app."
       },
       "overrides": {
         "developer": "Holisite"
@@ -294,7 +296,7 @@
           "Christian devotional app",
           "NIV Bible study"
         ],
-        "keywordIntro": "NIV Bible supports New International Version reading with offline scripture access, daily verses, devotional content, reading plans, and simple study tools for building a consistent Bible reading habit."
+        "keywordIntro": "NIV Bible helps readers engage with the New International Version through offline scripture reading, daily verses, devotionals, reading plans, and simple study tools for a steady Bible reading routine."
       },
       "overrides": {
         "developer": "Holisite"
@@ -326,7 +328,8 @@
           "daily devotional for women",
           "prayer and scripture app",
           "women Bible study",
-          "morning prayer for women"
+          "morning prayer for women",
+          "offline NIV Bible"
         ],
         "targetKeywords": [
           "Women's NIV Bible app",
@@ -339,7 +342,8 @@
           "offline NIV Bible app for women",
           "Christian prayer app for women",
           "NIV Bible reading plan for women",
-          "morning prayer app for women"
+          "morning prayer app for women",
+          "Bible app with notes and bookmarks"
         ],
         "relatedTerms": [
           "faith app for women",
@@ -356,9 +360,15 @@
           "women's Bible study plans",
           "faith journaling app",
           "morning prayer app",
-          "YouVersion Bible app"
+          "YouVersion Bible app",
+          "prayer reminders",
+          "Bible study tools",
+          "BibleGateway"
         ],
-        "keywordIntro": "Women's NIV Bible gives women the complete New International Version (39 Old Testament and 27 New Testament books) fully offline, with morning and evening prayer reminders, several reading plans running at once with progress tracking, verse bookmarks, notes, and daily encouragement. It fits searches for offline NIV Bible apps, women's reading plans, and daily devotionals for women."
+        "keywordIntro": "Women's NIV Bible is made for women who want offline NIV scripture, daily devotionals, prayer reminders, reading plans, bookmarks, notes, and daily encouragement in one simple Bible study app. It supports searches for NIV Bible apps for women, daily devotionals, prayer apps, and women’s Bible study plans."
+      },
+      "overrides": {
+        "developer": "Holisite"
       },
       "faq": [
         {
@@ -373,10 +383,7 @@
           "question": "Will the app remind me to pray and read?",
           "answer": "Yes. You can set morning and evening prayer reminders and daily push notifications to help you build a consistent prayer and scripture habit."
         }
-      ],
-      "overrides": {
-        "developer": "Holisite"
-      }
+      ]
     },
     {
       "slug": "womens-nkjv-bible-devotionals",
@@ -406,7 +413,10 @@
           "Christian devotional app for women",
           "New King James Bible study",
           "daily devotional for women",
-          "offline Bible for women"
+          "offline Bible for women",
+          "New King James Version study",
+          "Bible reading plan for women",
+          "scripture study for women"
         ],
         "targetKeywords": [
           "Women's NKJV Bible app",
@@ -419,7 +429,9 @@
           "NKJV prayer and devotionals",
           "daily devotional app for women",
           "women Bible study app",
-          "offline Bible app for women"
+          "offline Bible app for women",
+          "Bible reading plans for women",
+          "prayer journal app for women"
         ],
         "relatedTerms": [
           "New King James Version",
@@ -441,7 +453,10 @@
           "Bible reading plans for women",
           "Christian prayer app"
         ],
-        "keywordIntro": "Women's NKJV Bible & Devotionals centers on the New King James Version with morning and evening prayer check-ins, a personal prayer journal for reflections and answered prayers, daily devotionals written for women, and an easy-to-follow reading plan. It suits searches for NKJV devotionals for women, prayer journal apps, and daily Bible reading for women."
+        "keywordIntro": "Women's NKJV Bible & Devotionals is designed for women who want New King James Version scripture, daily devotionals, prayer reflections, and guided Bible study in one simple place. It fits searches around NKJV devotionals for women, daily Bible verses, women’s prayer journals, offline Bible reading, and Christian study routines for women."
+      },
+      "overrides": {
+        "developer": "Holisite"
       },
       "faq": [
         {
@@ -456,10 +471,7 @@
           "question": "Which Bible translation does this app use?",
           "answer": "It uses the New King James Version (NKJV), paired with a daily reading plan and devotionals designed specifically to encourage women in their faith."
         }
-      ],
-      "overrides": {
-        "developer": "Holisite"
-      }
+      ]
     },
     {
       "slug": "kakobuy",
@@ -513,7 +525,10 @@
           "Kakobuy sheets",
           "1688 shopping links",
           "QC photo references",
-          "curated shopping links"
+          "curated shopping links",
+          "deal lists",
+          "product finds spreadsheet",
+          "China product discovery"
         ],
         "relatedTerms": [
           "CNFans",
@@ -594,7 +609,8 @@
           "Taobao product spreadsheet",
           "Weidian finds sheet",
           "1688 links organizer",
-          "DHgate finds tracker"
+          "DHgate finds tracker",
+          "product link organizer"
         ],
         "relatedTerms": [
           "CNFans spreadsheet",
@@ -613,9 +629,10 @@
           "Oopbuy finds",
           "Mulebuy finds",
           "shopping agent finds",
-          "Kakobuy spreadsheet"
+          "Kakobuy spreadsheet",
+          "Weidian finds"
         ],
-        "keywordIntro": "KakoSheets helps shoppers save product links, organize finds, track collections, and export spreadsheet-style lists for Taobao, Weidian, 1688, DHgate, and shopping agent research."
+        "keywordIntro": "KakoSheets helps shoppers save product links, organize Taobao, Weidian, 1688, and DHgate finds, track notes and QC photos, and export clean spreadsheet-style shopping lists."
       },
       "overrides": {
         "developer": "Holisite"
@@ -730,7 +747,9 @@
           "daily scripture reading",
           "Christian devotional app",
           "ESV daily devotional",
-          "women's Bible study app"
+          "women's Bible study app",
+          "English Standard Version Bible app",
+          "faith growth app"
         ],
         "targetKeywords": [
           "ESV Women's Bible app",
@@ -741,7 +760,8 @@
           "daily devotional Bible app for women",
           "women Bible study app",
           "English Standard Version devotional app",
-          "daily scripture and prayer app"
+          "daily scripture and prayer app",
+          "Christian devotionals for women"
         ],
         "relatedTerms": [
           "prayer plans",
@@ -763,7 +783,10 @@
           "daily prayer app",
           "Scripture reading plan"
         ],
-        "keywordIntro": "ESV Women's Edition Bible offers the complete English Standard Version with personalized devotional plans built around topics women care about, such as prayer, faith growth, marriage, and family, plus daily prayer reminders and tools to read, highlight, take notes, and track spiritual progress. It fits searches for ESV devotionals for women, topical Bible study plans, and women's faith growth apps."
+        "keywordIntro": "ESV Women's Edition Bible helps women read the English Standard Version with daily verses, devotional reflections, prayer plans, Bible study notes, highlights, and reminders. It matches searches for an ESV Bible app for women, daily devotionals, women's Bible study tools, and scripture-based prayer support."
+      },
+      "overrides": {
+        "developer": "Holisite"
       },
       "faq": [
         {
@@ -778,10 +801,7 @@
           "question": "Can I track my reading and set prayer reminders?",
           "answer": "Yes. You can highlight verses, take notes, and track spiritual progress, and the app sends thoughtfully curated daily prayer reminders to help you stay consistent."
         }
-      ],
-      "overrides": {
-        "developer": "Holisite"
-      }
+      ]
     },
     {
       "slug": "womens-bible-nlt-edition",
@@ -816,7 +836,8 @@
           "offline Bible app for women",
           "Bible journal for women",
           "Christian prayer app for women",
-          "women of the Bible study"
+          "women of the Bible study",
+          "Women's NLT Bible app"
         ],
         "targetKeywords": [
           "Women's NLT Bible app",
@@ -831,7 +852,9 @@
           "Christian prayer app for women",
           "daily devotional Bible app",
           "Christian devotionals for women",
-          "prayer journal app for women"
+          "prayer journal app for women",
+          "daily Bible verse app for women",
+          "beginner Bible app for women"
         ],
         "relatedTerms": [
           "Christian Bible study",
@@ -853,7 +876,10 @@
           "New Living Translation",
           "women of the Bible"
         ],
-        "keywordIntro": "Women's Bible NLT Edition is built on the New Living Translation, using clear, modern language that makes scripture easy to relate to for busy women and newer readers. It auto-delivers daily inspirational verses and short prayers with reminders you can customize, plus devotionals that deepen progressively as your faith grows. It fits searches for easy-to-read NLT Bible apps, daily verse apps for women, and beginner-friendly devotionals."
+        "keywordIntro": "Women's Bible NLT Edition helps women read and reflect on the New Living Translation with clear scripture, daily devotionals, prayer prompts, and Bible study features. It is relevant for searches around NLT Bible apps for women, daily devotional Bible apps, prayer journal tools, offline Bible reading, and beginner-friendly women’s Bible study."
+      },
+      "overrides": {
+        "developer": "Holisite"
       },
       "faq": [
         {
@@ -868,10 +894,7 @@
           "question": "Is the app suitable for beginners?",
           "answer": "Yes. It supports women at every stage of faith, with daily verses, prayer plans, and devotionals that deepen progressively as you continue your reading journey."
         }
-      ],
-      "overrides": {
-        "developer": "Holisite"
-      }
+      ]
     }
   ]
 }
